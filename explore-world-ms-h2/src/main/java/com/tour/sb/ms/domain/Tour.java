@@ -39,7 +39,7 @@ public class Tour implements Serializable {
 	private String blurb;
 	
 	@Column
-	private String price;
+	private Integer price;
 	
 	@Column
 	private String duration;
@@ -69,7 +69,7 @@ public class Tour implements Serializable {
 	 * @param title
 	 * @param description
 	 * @param blurb
-	 * @param price
+	 * @param price2
 	 * @param duration
 	 * @param bullets
 	 * @param keywords
@@ -77,13 +77,13 @@ public class Tour implements Serializable {
 	 * @param difficulty
 	 * @param region
 	 */
-	public Tour(String title, String description, String blurb, String price, String duration, String bullets,
+	public Tour(String title, String description, String blurb, Integer price2, String duration, String bullets,
 			String keywords, TourPackage tourPackage, Difficulty difficulty, Region region) {
 		super();
 		this.title = title;
 		this.description = description;
 		this.blurb = blurb;
-		this.price = price;
+		this.price = price2;
 		this.duration = duration;
 		this.bullets = bullets;
 		this.keywords = keywords;
@@ -137,14 +137,14 @@ public class Tour implements Serializable {
 	/**
 	 * @return the price
 	 */
-	public String getPrice() {
+	public Integer getPrice() {
 		return price;
 	}
 
 	/**
 	 * @param price the price to set
 	 */
-	public void setPrice(String price) {
+	public void setPrice(Integer price) {
 		this.price = price;
 	}
 
