@@ -4,10 +4,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class ExploreWorldMicroserviceH2Application {
+public class ExploreWorldMSH2Application {
 
 	public static void main(String[] args) {
-		SpringApplication.run(ExploreWorldMicroserviceH2Application.class, args);
+		SpringApplication.run(ExploreWorldMSH2Application.class, args);
 	}
 	
 

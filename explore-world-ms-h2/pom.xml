@@ -9,9 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.tour.sb.ms</groupId>
-	<artifactId>explore-world-microservice-h2</artifactId>
+	<artifactId>explore-world-ms-h2</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>explore-world-microservice-h2</name>
+	<name>explore-world-ms-h2</name>
 	<description>Demo  Spring Boot microservice for exploring the world</description>
 
 	<properties>
