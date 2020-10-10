@@ -51,7 +51,7 @@ public class TourService {
 	 * @param region
 	 * @return
 	 */
-	Tour createTour(String title, String description, String blurb, Integer price, String duration, String bullets,
+	public Tour createTour(String title, String description, String blurb, Integer price, String duration, String bullets,
 			String keywords, String tourPackageName, Difficulty difficulty, Region region) {
 
 		TourPackage tourPackage = tourPackageRepository.findById(tourPackageName)
