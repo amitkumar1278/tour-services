@@ -9,6 +9,6 @@ package com.tour.sb.ms.domain;
  * Enumeration of the level of effort.
  */
 public enum Difficulty {
-	Easy, Medium, Difficult, varies;
+	Easy, Medium, Difficult, Varies;
 }
 

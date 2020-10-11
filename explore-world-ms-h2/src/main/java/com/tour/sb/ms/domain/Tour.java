@@ -18,51 +18,48 @@ import javax.persistence.ManyToOne;
  */
 
 @Entity
-public class Tour implements Serializable {
+public class Tour {
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
+
 
 	@Id
 	@GeneratedValue
 	private Integer id;
-	
+
 	@Column
 	private String title;
-	
+
 	@Column(length = 2000)
 	private String description;
-	
+
 	@Column(length = 2000)
 	private String blurb;
-	
+
 	@Column
 	private Integer price;
-	
+
 	@Column
 	private String duration;
-	
+
 	@Column(length = 2000)
 	private String bullets;
-	
+
 	@Column
 	private String keywords;
-	
+
 	@ManyToOne
 	private TourPackage tourPackage;
-	
+
 	@Column
 	@Enumerated
 	private Difficulty difficulty;
-	
+
 	@Column
 	@Enumerated
 	private Region region;
 
 	protected Tour() {
-		
+
 	}
 
 	/**
@@ -77,13 +74,13 @@ public class Tour implements Serializable {
 	 * @param difficulty
 	 * @param region
 	 */
-	public Tour(String title, String description, String blurb, Integer price2, String duration, String bullets,
+	public Tour(String title, String description, String blurb, Integer price, String duration, String bullets,
 			String keywords, TourPackage tourPackage, Difficulty difficulty, Region region) {
 		super();
 		this.title = title;
 		this.description = description;
 		this.blurb = blurb;
-		this.price = price2;
+		this.price = price;
 		this.duration = duration;
 		this.bullets = bullets;
 		this.keywords = keywords;
@@ -324,6 +321,6 @@ public class Tour implements Serializable {
 			return false;
 		return true;
 	}
-	
-	
+
+
 }

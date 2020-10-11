@@ -16,12 +16,8 @@ import javax.persistence.Id;
  */
 
 @Entity
-public class TourPackage implements Serializable {
+public class TourPackage {
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
 	
 	@Id
 	private String code;

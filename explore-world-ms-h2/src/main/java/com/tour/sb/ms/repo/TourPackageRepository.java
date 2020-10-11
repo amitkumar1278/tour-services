@@ -14,4 +14,6 @@ import com.tour.sb.ms.domain.TourPackage;
  */
 public interface TourPackageRepository extends CrudRepository<TourPackage, String> {
 
+	TourPackage findByName(String name);
+	
 }

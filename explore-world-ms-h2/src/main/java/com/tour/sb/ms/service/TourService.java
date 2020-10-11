@@ -35,7 +35,7 @@ public class TourService {
 		this.tourPackageRepository = tourPackageRepository;
 	}
 
-	
+
 	/**
 	 * Create a new Tour Object and persist it to the Database.
 	 * 
@@ -54,14 +54,21 @@ public class TourService {
 	public Tour createTour(String title, String description, String blurb, Integer price, String duration, String bullets,
 			String keywords, String tourPackageName, Difficulty difficulty, Region region) {
 
-		TourPackage tourPackage = tourPackageRepository.findById(tourPackageName)
-									.orElseThrow(() -> new RuntimeException("Tour pacakge does not exist: "+ tourPackageName));
-		
+		TourPackage tourPackage = tourPackageRepository.findByName(tourPackageName);
+		System.out.println("TourService : createTour : passed tourPackageName : "+ tourPackageName + ", fetched tourPackage : "+ tourPackage.toString());
+
+
+		if(null == tourPackage || !tourPackage.getName().equalsIgnoreCase(tourPackageName)) {
+			throw new RuntimeException("Tour pacakge does not exist: "+ tourPackageName);
+		}
+		// .orElseThrow(() -> new RuntimeException("Tour pacakge does not exist: "+ tourPackageName));
+
+
 		return tourRepository.save(new Tour(title, description, blurb, price, duration, bullets, keywords, tourPackage, difficulty, region));
 
 	}
-	
-	
+
+
 	/**
 	 * Calculate the number of Tours in the Database.
 	 * 

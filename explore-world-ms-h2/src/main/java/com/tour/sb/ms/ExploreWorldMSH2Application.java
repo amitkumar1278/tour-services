@@ -6,20 +6,23 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect.Visibility;
-import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.annotation.PropertyAccessor;
+import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.tour.sb.ms.domain.Difficulty;
 import com.tour.sb.ms.domain.Region;
+import com.tour.sb.ms.domain.TourPackage;
+import com.tour.sb.ms.repo.TourPackageRepository;
 import com.tour.sb.ms.service.TourPackageService;
 import com.tour.sb.ms.service.TourService;
 
 @SpringBootApplication
-public class ExploreWorldMSH2Application {
+public class ExploreWorldMSH2Application implements CommandLineRunner {
 
 	@Value("${ec.importfile}")
 	private String importfile;
@@ -28,20 +31,34 @@ public class ExploreWorldMSH2Application {
 	private TourPackageService tourPackageService;
 
 	@Autowired
+	private TourPackageRepository tourPackageRepository;
+
+	@Autowired
 	private TourService tourService;
 
 	public static void main(String[] args) {
 		SpringApplication.run(ExploreWorldMSH2Application.class, args);
 	}
 
+	@Override
 	public void run(String... args) throws Exception {
-		
+
 		createTourPackage();
 		long numOfTourPackages = tourPackageService.total();
-		
+
+		List<TourPackage> savedNotesList = (List<TourPackage>) tourPackageRepository.findAll();
+		System.out.println("\n######################    All Tour Package are below  ->   ##########################");
+		savedNotesList.forEach(note -> {
+			System.out.println(note.toString());
+		});
+		System.out.println("-----------------------Total TourPackage ::----------------------"+ numOfTourPackages);
+		System.out.println("---------------------------------------------\n\n");
+
+
+
 		createTours(importfile);
 		long numOfTours = tourService.total();
-		
+
 	}
 
 	/**
@@ -66,18 +83,22 @@ public class ExploreWorldMSH2Application {
 	 * @throws IOException
 	 */
 	private void createTours(String fileToImport) throws IOException {
+
 		// TODO Auto-generated method stub
+		/**
+		 * Reading file fileToImport using read method of TourFromFile and holding data in "List<TourFromFile>", which is further passed to create tours
+		 */
 		TourFromFile.read(fileToImport)
-				.forEach(importedTour -> tourService.createTour(importedTour.getTitle(), 
-						importedTour.getDescription(),
-						importedTour.getBlurb(), 
-						importedTour.getPrice(), 
-						importedTour.getLength(),
-						importedTour.getBullets(), 
-						importedTour.getKeywords(), 
-						importedTour.getPackageType(),
-						importedTour.getDifficulty(), 
-						importedTour.getRegion()));
+		.forEach(importedTour -> tourService.createTour(importedTour.getTitle(), 
+				importedTour.getDescription(),
+				importedTour.getBlurb(), 
+				importedTour.getPrice(), 
+				importedTour.getLength(),
+				importedTour.getBullets(), 
+				importedTour.getKeywords(), 
+				importedTour.getPackageType(),
+				importedTour.getDifficulty(), 
+				importedTour.getRegion()));
 	}
 
 	private static class TourFromFile {
@@ -93,7 +114,6 @@ public class ExploreWorldMSH2Application {
 		private String difficulty;
 		private String region;
 
-		@SuppressWarnings("unused")
 		static List<TourFromFile> read(String fileToImport) throws IOException {
 			return new ObjectMapper().setVisibility(PropertyAccessor.FIELD, Visibility.ANY)
 					.readValue(new FileInputStream(fileToImport), new TypeReference<List<TourFromFile>>() {
