@@ -61,9 +61,9 @@ public class ExploreWorldMSH2Application implements CommandLineRunner {
 
 	}
 
-	/**
-	 * 
-	 */
+    /**
+     * Initialize all the known tour packages
+     */
 	private void createTourPackage() {
 
 		tourPackageService.createTourPackage("BC", "Backpack Cal");
@@ -79,6 +79,8 @@ public class ExploreWorldMSH2Application implements CommandLineRunner {
 	}
 
 	/**
+	 * Create tour entities from an external file
+	 *      
 	 * @param importfile2
 	 * @throws IOException
 	 */
@@ -101,6 +103,9 @@ public class ExploreWorldMSH2Application implements CommandLineRunner {
 				importedTour.getRegion()));
 	}
 
+    /**
+     * Helper class to import ExploreCalifornia.json
+     */
 	private static class TourFromFile {
 
 		private String packageType;

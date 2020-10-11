@@ -54,15 +54,15 @@ public class TourService {
 	public Tour createTour(String title, String description, String blurb, Integer price, String duration, String bullets,
 			String keywords, String tourPackageName, Difficulty difficulty, Region region) {
 
-		TourPackage tourPackage = tourPackageRepository.findByName(tourPackageName);
-		System.out.println("TourService : createTour : passed tourPackageName : "+ tourPackageName + ", fetched tourPackage : "+ tourPackage.toString());
+		//		TourPackage tourPackage = tourPackageRepository.findByName(tourPackageName);
+		TourPackage tourPackage = tourPackageRepository.findByName(tourPackageName).orElseThrow(()->
+		new RuntimeException("Tour package does not exist: " + tourPackageName));
 
+		System.out.println("TourService : createTour : passed tourPackageName : "+ tourPackageName + ", fetched tourPackage : "+ tourPackage.toString());
 
 		if(null == tourPackage || !tourPackage.getName().equalsIgnoreCase(tourPackageName)) {
 			throw new RuntimeException("Tour pacakge does not exist: "+ tourPackageName);
 		}
-		// .orElseThrow(() -> new RuntimeException("Tour pacakge does not exist: "+ tourPackageName));
-
 
 		return tourRepository.save(new Tour(title, description, blurb, price, duration, bullets, keywords, tourPackage, difficulty, region));
 

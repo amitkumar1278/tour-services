@@ -3,6 +3,8 @@
  */
 package com.tour.sb.ms.repo;
 
+import java.util.Optional;
+
 import org.springframework.data.repository.CrudRepository;
 
 import com.tour.sb.ms.domain.TourPackage;
@@ -14,6 +16,11 @@ import com.tour.sb.ms.domain.TourPackage;
  */
 public interface TourPackageRepository extends CrudRepository<TourPackage, String> {
 
-	TourPackage findByName(String name);
+
+	/**
+	 * @param name
+	 * @return
+	 */
+	Optional<TourPackage> findByName(String name);
 	
 }
