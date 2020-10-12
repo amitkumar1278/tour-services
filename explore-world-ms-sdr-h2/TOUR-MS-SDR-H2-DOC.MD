@@ -693,7 +693,484 @@ Status: 200(OK)
 }
 
 
-13. http://localhost:8080/tours/search
+13. http://localhost:8080/tours?size=3&page=1&sort=title,asc
+
+Request Body:
+httpMethod: GET
+
+Response Body:
+Status: 200(OK)
+{
+    "_embedded": {
+        "tours": [
+            {
+                "title": "Avila Beach Hot springs",
+                "description": "The content for this field  is only available in the course exercise files found on the website library.",
+                "blurb": "The content for this field  is only available in the course exercise files found on the website library.",
+                "price": 1000,
+                "duration": "3 days",
+                "bullets": "The content for this field  is only available in the course exercise files found on the website library.",
+                "keywords": "Hot springs, hiking, cabin, beach, kayaking, hiking",
+                "difficulty": "Easy",
+                "region": "Central_Coast",
+                "_links": {
+                    "self": {
+                        "href": "http://localhost:8080/tours/9"
+                    },
+                    "tour": {
+                        "href": "http://localhost:8080/tours/9"
+                    },
+                    "tourPackage": {
+                        "href": "http://localhost:8080/tours/9/tourPackage"
+                    }
+                }
+            },
+            {
+                "title": "Big Sur Retreat",
+                "description": "The content for this field  is only available in the course exercise files found on the website library.",
+                "blurb": "The content for this field  is only available in the course exercise files found on the website library.",
+                "price": 750,
+                "duration": "3 days",
+                "bullets": "The content for this field  is only available in the course exercise files found on the website library.",
+                "keywords": "Hiking, National Parks, Big Sur",
+                "difficulty": "Medium",
+                "region": "Central_Coast",
+                "_links": {
+                    "self": {
+                        "href": "http://localhost:8080/tours/1"
+                    },
+                    "tour": {
+                        "href": "http://localhost:8080/tours/1"
+                    },
+                    "tourPackage": {
+                        "href": "http://localhost:8080/tours/1/tourPackage"
+                    }
+                }
+            },
+            {
+                "title": "Channel Islands Excursion",
+                "description": "The content for this field  is only available in the course exercise files found on the website library.",
+                "blurb": "The content for this field  is only available in the course exercise files found on the website library.",
+                "price": 150,
+                "duration": "1 day",
+                "bullets": "The content for this field  is only available in the course exercise files found on the website library.",
+                "keywords": "Channel Islands, Boating, Whale watching, Hiking",
+                "difficulty": "Easy",
+                "region": "Southern_California",
+                "_links": {
+                    "self": {
+                        "href": "http://localhost:8080/tours/5"
+                    },
+                    "tour": {
+                        "href": "http://localhost:8080/tours/5"
+                    },
+                    "tourPackage": {
+                        "href": "http://localhost:8080/tours/5/tourPackage"
+                    }
+                }
+            }
+        ]
+    },
+    "_links": {
+        "first": {
+            "href": "http://localhost:8080/tours?page=0&size=3&sort=title,asc"
+        },
+        "prev": {
+            "href": "http://localhost:8080/tours?page=0&size=3&sort=title,asc"
+        },
+        "self": {
+            "href": "http://localhost:8080/tours?size=3&page=1&sort=title,asc"
+        },
+        "next": {
+            "href": "http://localhost:8080/tours?page=2&size=3&sort=title,asc"
+        },
+        "last": {
+            "href": "http://localhost:8080/tours?page=9&size=3&sort=title,asc"
+        },
+        "profile": {
+            "href": "http://localhost:8080/profile/tours"
+        },
+        "search": {
+            "href": "http://localhost:8080/tours/search"
+        }
+    },
+    "page": {
+        "size": 3,
+        "totalElements": 30,
+        "totalPages": 10,
+        "number": 1
+    }
+}
+
+
+
+14. http://localhost:8080/tours/search/findByTourPackageCode?code=CC&size=2&sort=title,asc
+
+Request Body:
+httpMethod: GET
+
+Response Body:
+Status: 200(OK)
+{
+    "_embedded": {
+        "tours": [
+            {
+                "title": "Day Spa Package",
+                "description": "The content for this field  is only available in the course exercise files found on the website library.",
+                "blurb": "The content for this field  is only available in the course exercise files found on the website library.",
+                "price": 550,
+                "duration": "1 day",
+                "bullets": "The content for this field  is only available in the course exercise files found on the website library.",
+                "keywords": "Spa, Relaxation, Ojai, Art, Yoga",
+                "difficulty": "Easy",
+                "region": "Southern_California",
+                "_links": {
+                    "self": {
+                        "href": "http://localhost:8080/tours/6"
+                    },
+                    "tour": {
+                        "href": "http://localhost:8080/tours/6"
+                    },
+                    "tourPackage": {
+                        "href": "http://localhost:8080/tours/6/tourPackage"
+                    }
+                }
+            },
+            {
+                "title": "Huntington website library and Pasadena Retreat Tour",
+                "description": "The content for this field  is only available in the course exercise files found on the website library.",
+                "blurb": "The content for this field  is only available in the course exercise files found on the website library.",
+                "price": 225,
+                "duration": "1 day",
+                "bullets": "The content for this field  is only available in the course exercise files found on the website library.",
+                "keywords": "Spa, Relaxation, Art, Yoga",
+                "difficulty": "Easy",
+                "region": "Southern_California",
+                "_links": {
+                    "self": {
+                        "href": "http://localhost:8080/tours/8"
+                    },
+                    "tour": {
+                        "href": "http://localhost:8080/tours/8"
+                    },
+                    "tourPackage": {
+                        "href": "http://localhost:8080/tours/8/tourPackage"
+                    }
+                }
+            }
+        ]
+    },
+    "_links": {
+        "first": {
+            "href": "http://localhost:8080/tours/search/findByTourPackageCode?code=CC&page=0&size=2&sort=title,asc"
+        },
+        "self": {
+            "href": "http://localhost:8080/tours/search/findByTourPackageCode?code=CC&page=0&size=2&sort=title,asc"
+        },
+        "next": {
+            "href": "http://localhost:8080/tours/search/findByTourPackageCode?code=CC&page=1&size=2&sort=title,asc"
+        },
+        "last": {
+            "href": "http://localhost:8080/tours/search/findByTourPackageCode?code=CC&page=1&size=2&sort=title,asc"
+        }
+    },
+    "page": {
+        "size": 2,
+        "totalElements": 3,
+        "totalPages": 2,
+        "number": 0
+    }
+}
+
+
+15. http://localhost:8080/packages
+
+After below change accessing TourPackageRepository using "http://localhost:8080/packages"
+@RepositoryRestResource(collectionResourceRel = "packages", path = "packages")
+public interface TourPackageRepository extends CrudRepository<TourPackage, String> {
+
+
+Request Body:
+httpMethod: GET
+
+Response Body:
+Status: 200(OK)
+{
+    "_embedded": {
+        "packages": [
+            {
+                "name": "Backpack Cal",
+                "_links": {
+                    "self": {
+                        "href": "http://localhost:8080/packages/BC"
+                    },
+                    "tourPackage": {
+                        "href": "http://localhost:8080/packages/BC"
+                    }
+                }
+            },
+            {
+                "name": "California Calm",
+                "_links": {
+                    "self": {
+                        "href": "http://localhost:8080/packages/CC"
+                    },
+                    "tourPackage": {
+                        "href": "http://localhost:8080/packages/CC"
+                    }
+                }
+            },
+            {
+                "name": "California Hot Springs",
+                "_links": {
+                    "self": {
+                        "href": "http://localhost:8080/packages/CH"
+                    },
+                    "tourPackage": {
+                        "href": "http://localhost:8080/packages/CH"
+                    }
+                }
+            },
+            {
+                "name": "Cycle California",
+                "_links": {
+                    "self": {
+                        "href": "http://localhost:8080/packages/CY"
+                    },
+                    "tourPackage": {
+                        "href": "http://localhost:8080/packages/CY"
+                    }
+                }
+            },
+            {
+                "name": "From Desert to Sea",
+                "_links": {
+                    "self": {
+                        "href": "http://localhost:8080/packages/DS"
+                    },
+                    "tourPackage": {
+                        "href": "http://localhost:8080/packages/DS"
+                    }
+                }
+            },
+            {
+                "name": "Kids California",
+                "_links": {
+                    "self": {
+                        "href": "http://localhost:8080/packages/KC"
+                    },
+                    "tourPackage": {
+                        "href": "http://localhost:8080/packages/KC"
+                    }
+                }
+            },
+            {
+                "name": "Nature Watch",
+                "_links": {
+                    "self": {
+                        "href": "http://localhost:8080/packages/NW"
+                    },
+                    "tourPackage": {
+                        "href": "http://localhost:8080/packages/NW"
+                    }
+                }
+            },
+            {
+                "name": "Snowboard Cali",
+                "_links": {
+                    "self": {
+                        "href": "http://localhost:8080/packages/SC"
+                    },
+                    "tourPackage": {
+                        "href": "http://localhost:8080/packages/SC"
+                    }
+                }
+            },
+            {
+                "name": "Taste of California",
+                "_links": {
+                    "self": {
+                        "href": "http://localhost:8080/packages/TC"
+                    },
+                    "tourPackage": {
+                        "href": "http://localhost:8080/packages/TC"
+                    }
+                }
+            }
+        ]
+    },
+    "_links": {
+        "self": {
+            "href": "http://localhost:8080/packages"
+        },
+        "profile": {
+            "href": "http://localhost:8080/profile/packages"
+        },
+        "search": {
+            "href": "http://localhost:8080/packages/search"
+        }
+    }
+}
+
+
+16. http://localhost:8080/packages/CC
+
+Request Body:
+httpMethod: GET
+
+Response Body:
+Status: 200(OK)
+{
+    "name": "California Calm",
+    "_links": {
+        "self": {
+            "href": "http://localhost:8080/packages/CC"
+        },
+        "tourPackage": {
+            "href": "http://localhost:8080/packages/CC"
+        }
+    }
+}
+
+
+
+17. http://localhost:8080/packages/CC
+
+Request Body:
+httpMethod: DELETE
+
+Response Body:
+Status: 405(Method Not Allowed)
+{
+    "_links": {
+        "findByTourPackage": {
+            "href": "http://localhost:8080/tours/search/findByTourPackage{?code}",
+            "templated": true
+        },
+        "self": {
+            "href": "http://localhost:8080/tours/search"
+        }
+    }
+}
+
+
+
+
+18. http://localhost:8080
+
+Request Body:
+httpMethod: GET
+
+Response Body:
+Status: 200(OK)
+{
+    "_links": {
+        "packages": {
+            "href": "http://localhost:8080/packages"
+        },
+        "tours": {
+            "href": "http://localhost:8080/tours{?page,size,sort}",
+            "templated": true
+        },
+        "profile": {
+            "href": "http://localhost:8080/profile"
+        }
+    }
+}
+
+
+
+
+19. http://localhost:8080/profile
+
+Request Body:
+httpMethod: GET
+
+Response Body:
+Status: 200(OK)
+{
+    "_links": {
+        "self": {
+            "href": "http://localhost:8080/profile"
+        },
+        "packages": {
+            "href": "http://localhost:8080/profile/packages"
+        },
+        "tours": {
+            "href": "http://localhost:8080/profile/tours"
+        }
+    }
+}
+
+
+
+
+20. http://localhost:8080/profile/packages
+
+Request Body:
+httpMethod: GET
+
+Response Body:
+Status: 200(OK)
+{
+    "alps": {
+        "version": "1.0",
+        "descriptor": [
+            {
+                "id": "tourPackage-representation",
+                "href": "http://localhost:8080/profile/packages",
+                "descriptor": [
+                    {
+                        "name": "name",
+                        "type": "SEMANTIC"
+                    }
+                ]
+            },
+            {
+                "id": "get-packages",
+                "name": "packages",
+                "type": "SAFE",
+                "descriptor": [],
+                "rt": "#tourPackage-representation"
+            },
+            {
+                "id": "get-tourPackage",
+                "name": "tourPackage",
+                "type": "SAFE",
+                "descriptor": [],
+                "rt": "#tourPackage-representation"
+            },
+            {
+                "name": "findByName",
+                "type": "SAFE",
+                "descriptor": [
+                    {
+                        "name": "name",
+                        "type": "SEMANTIC"
+                    }
+                ]
+            }
+        ]
+    }
+}
+
+
+
+
+21. http://localhost:8080/browser/index.html#/
+
+after addition of below dependency:
+		<dependency>
+			<groupId>org.springframework.data</groupId>
+			<artifactId>spring-data-rest-hal-browser</artifactId>
+		</dependency>
+		
+in browser we can explore API's.
+
+
+
+sample
+14. http://localhost:8080/tours/search
 
 Request Body:
 httpMethod: GET
@@ -714,3 +1191,23 @@ Status: 200(OK)
 
 
 
+
+sample
+14. http://localhost:8080/tours/search
+
+Request Body:
+httpMethod: GET
+
+Response Body:
+Status: 200(OK)
+{
+    "_links": {
+        "findByTourPackage": {
+            "href": "http://localhost:8080/tours/search/findByTourPackage{?code}",
+            "templated": true
+        },
+        "self": {
+            "href": "http://localhost:8080/tours/search"
+        }
+    }
+}
