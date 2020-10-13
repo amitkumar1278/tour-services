@@ -1169,45 +1169,6 @@ in browser we can explore API's.
 
 
 
-sample
-14. http://localhost:8080/tours/search
-
-Request Body:
-httpMethod: GET
-
-Response Body:
-Status: 200(OK)
-{
-    "_links": {
-        "findByTourPackage": {
-            "href": "http://localhost:8080/tours/search/findByTourPackage{?code}",
-            "templated": true
-        },
-        "self": {
-            "href": "http://localhost:8080/tours/search"
-        }
-    }
-}
 
 
 
-
-sample
-14. http://localhost:8080/tours/search
-
-Request Body:
-httpMethod: GET
-
-Response Body:
-Status: 200(OK)
-{
-    "_links": {
-        "findByTourPackage": {
-            "href": "http://localhost:8080/tours/search/findByTourPackage{?code}",
-            "templated": true
-        },
-        "self": {
-            "href": "http://localhost:8080/tours/search"
-        }
-    }
-}
