@@ -167,8 +167,7 @@ Status: 200(OK)
 
 
 
-sample  6
-14. http://localhost:8080/tours/search
+6. http://localhost:8080/tours/1/ratings?size=3&page=1&sort=score,desc
 
 Request Body:
 httpMethod: GET
@@ -176,56 +175,51 @@ httpMethod: GET
 Response Body:
 Status: 200(OK)
 {
-    "_links": {
-        "findByTourPackage": {
-            "href": "http://localhost:8080/tours/search/findByTourPackage{?code}",
-            "templated": true
+    "content": [
+        {
+            "score": 3,
+            "comment": "No Comment",
+            "customerId": 1
         },
-        "self": {
-            "href": "http://localhost:8080/tours/search"
+        {
+            "score": 2,
+            "comment": "No Comment",
+            "customerId": 6
+        },
+        {
+            "score": 1,
+            "comment": "No Comment",
+            "customerId": 7
         }
-    }
+    ],
+    "pageable": {
+        "sort": {
+            "sorted": true,
+            "unsorted": false,
+            "empty": false
+        },
+        "offset": 3,
+        "pageNumber": 1,
+        "pageSize": 3,
+        "paged": true,
+        "unpaged": false
+    },
+    "last": false,
+    "totalElements": 7,
+    "totalPages": 3,
+    "number": 1,
+    "sort": {
+        "sorted": true,
+        "unsorted": false,
+        "empty": false
+    },
+    "size": 3,
+    "first": false,
+    "numberOfElements": 3,
+    "empty": false
 }
 
 
 
-sample
-14. http://localhost:8080/tours/search
-
-Request Body:
-httpMethod: GET
-
-Response Body:
-Status: 200(OK)
-{
-    "_links": {
-        "findByTourPackage": {
-            "href": "http://localhost:8080/tours/search/findByTourPackage{?code}",
-            "templated": true
-        },
-        "self": {
-            "href": "http://localhost:8080/tours/search"
-        }
-    }
-}
 
 
-sample
-14. http://localhost:8080/tours/search
-
-Request Body:
-httpMethod: GET
-
-Response Body:
-Status: 200(OK)
-{
-    "_links": {
-        "findByTourPackage": {
-            "href": "http://localhost:8080/tours/search/findByTourPackage{?code}",
-            "templated": true
-        },
-        "self": {
-            "href": "http://localhost:8080/tours/search"
-        }
-    }
-}
