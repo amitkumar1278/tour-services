@@ -27,7 +27,7 @@ public class TourRating {
 	private String tourId;
 	
 	@NotNull
-	private String customerId;
+	private Integer customerId;
 
 	@Min(0)
 	@Max(5)
@@ -51,7 +51,7 @@ public class TourRating {
      * @param score Integer score (1-5)
      * @param comment Optional comment from the customer
      */
-	public TourRating(String tourId, @NotNull String customerId, @Min(0) @Max(5) Integer score,
+	public TourRating(String tourId, @NotNull Integer customerId, @Min(0) @Max(5) Integer score,
 			@Size(max = 255) String comment) {
 		super();
 		this.tourId = tourId;
@@ -128,7 +128,7 @@ public class TourRating {
 	/**
 	 * @return the customerId
 	 */
-	public String getCustomerId() {
+	public Integer getCustomerId() {
 		return customerId;
 	}
 
