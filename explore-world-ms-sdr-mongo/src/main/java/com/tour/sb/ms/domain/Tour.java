@@ -23,7 +23,7 @@ public class Tour {
 
 
 	@Id
-	private Integer id;
+	private String id;
 
     @Indexed
 	private String title;
@@ -59,7 +59,7 @@ public class Tour {
 	/**
 	 * @return the id
 	 */
-	public Integer getId() {
+	public String getId() {
 		return id;
 	}
 
