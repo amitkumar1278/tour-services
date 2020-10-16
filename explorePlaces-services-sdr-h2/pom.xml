@@ -4,11 +4,11 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.example.ec</groupId>
-	<artifactId>explorecali</artifactId>
+	<artifactId>explorePlaces-services-sdr-h2</artifactId>
 	<version>3.0.0-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
-	<name>explorecali</name>
+	<name>explorePlaces-services-sdr-h2</name>
 	<description>Explore California Microservice</description>
 
 	<parent>
