@@ -101,6 +101,13 @@ public class ExploreWorldMSMongoApplication implements CommandLineRunner {
 
 
 		static List<TourFromFile> read(String fileToImport) throws IOException {
+			
+			List<Map<String, String>> records = new ObjectMapper()
+					.setVisibility(PropertyAccessor.FIELD, Visibility.ANY)
+					.readValue(new FileInputStream(fileToImport), 
+							new TypeReference<List<Map<String, String>>>() { });
+			
+			
 			return new ObjectMapper().setVisibility(PropertyAccessor.FIELD, Visibility.ANY)
 					.readValue(new FileInputStream(fileToImport), new TypeReference<List<TourFromFile>>() {
 					});
@@ -111,6 +118,10 @@ public class ExploreWorldMSMongoApplication implements CommandLineRunner {
 		
 		TourFromFile(Map<String, String> record){
 			this.title = record.get("title");
+			this.packageName = record.get("packageType");
+			this.details = record;
+			this.details.remove("packageType");
+			this.details.remove("title");
 		}
 
 		/**
