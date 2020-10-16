@@ -4,6 +4,7 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -51,14 +52,12 @@ public class ExploreWorldMSMongoApplication implements CommandLineRunner {
 		});
 		System.out.println("---------------------------------------------\n\n");
 
-
-
 		createTours(importfile);
 	}
 
-    /**
-     * Initialize all the known tour packages
-     */
+	/**
+	 * Initialize all the known tour packages
+	 */
 	private void createTourAllPackages() {
 
 		tourPackageService.createTourPackage("BC", "Backpack Cal");
@@ -75,23 +74,23 @@ public class ExploreWorldMSMongoApplication implements CommandLineRunner {
 
 	/**
 	 * Create tour entities from an external file
-	 *      
+	 * 
 	 * @param importfile2
 	 * @throws IOException
 	 */
 	private void createTours(String fileToImport) throws IOException {
 
 		// TODO Auto-generated method stub
-		/**
-		 * Reading file fileToImport using read method of TourFromFile and holding data in "List<TourFromFile>", which is further passed to create tours
-		 */
 		TourFromFile.read(fileToImport)
-		.forEach(importedTour -> tourService.createTour(importedTour.getTitle(), 
-				importedTour.getPackageName(), importedTour.getDetails()));
+					.forEach(tourFromFile -> tourService.createTour(tourFromFile.getTitle(),
+							tourFromFile.getPackageName(), tourFromFile.getDetails()));
 	}
 
     /**
-     * Helper class to import ExploreCalifornia.json
+     * Helper class to import ExploreCalifornia.json for a MongoDb Document.
+     * Only interested in the title and package name, the remaining fields
+     * are a collection of key-value pairs
+     *
      */
 	private static class TourFromFile {
 
@@ -100,28 +99,29 @@ public class ExploreWorldMSMongoApplication implements CommandLineRunner {
 		private Map<String, String> details;
 
 
-		static List<TourFromFile> read(String fileToImport) throws IOException {
-			
-			List<Map<String, String>> records = new ObjectMapper()
-					.setVisibility(PropertyAccessor.FIELD, Visibility.ANY)
-					.readValue(new FileInputStream(fileToImport), 
-							new TypeReference<List<Map<String, String>>>() { });
-			
-			
-			return new ObjectMapper().setVisibility(PropertyAccessor.FIELD, Visibility.ANY)
-					.readValue(new FileInputStream(fileToImport), new TypeReference<List<TourFromFile>>() {
-					});
-		}
-
-		protected TourFromFile() {
-		}
-		
-		TourFromFile(Map<String, String> record){
+		TourFromFile(Map<String, String> record) {
 			this.title = record.get("title");
 			this.packageName = record.get("packageType");
 			this.details = record;
 			this.details.remove("packageType");
 			this.details.remove("title");
+		}
+
+		/**
+		 * Reader
+		 * 
+		 * @param fileToImport
+		 * @return
+		 * @throws IOException
+		 */
+		static List<TourFromFile> read(String fileToImport) throws IOException {
+
+			List<Map<String, String>> records = new ObjectMapper()
+					.setVisibility(PropertyAccessor.FIELD, Visibility.ANY)
+					.readValue(new FileInputStream(fileToImport), 
+							new TypeReference<List<Map<String, String>>>() {	});
+
+			return records.stream().map(TourFromFile::new).collect(Collectors.toList());
 		}
 
 		/**
@@ -145,9 +145,6 @@ public class ExploreWorldMSMongoApplication implements CommandLineRunner {
 			return details;
 		}
 
-
-
 	}
-
 
 }
