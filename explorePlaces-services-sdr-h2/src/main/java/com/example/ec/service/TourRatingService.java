@@ -1,6 +1,8 @@
 package com.example.ec.service;
 
+import java.util.List;
 import java.util.NoSuchElementException;
+import java.util.OptionalDouble;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -117,9 +119,35 @@ public class TourRatingService {
 		tourRatingRepository.delete(rating);
 	}
 	
-//	public Double getAverageScore(int tourId) {
-//		
-//	}
+    /**
+     * Get the average score of a tour.
+     *
+     * @param tourId tour identifier
+     * @return average score as a Double.
+     * @throws NoSuchElementException
+     */
+	public Double getAverageScore(int tourId) throws NoSuchElementException {
+		
+		List<TourRating> ratings = tourRatingRepository.findByTourId(verifyTour(tourId).getId());
+		OptionalDouble average = ratings.stream().mapToInt((rating) ->  rating.getScore()).average();
+		return average.isPresent() ?  average.getAsDouble():null;
+	}
+	
+	
+    /**
+     * Service for many customers to give the same score for a service
+     *
+     * @param tourId
+     * @param score
+     * @param customers
+     */
+	public void rateMany(int tourId, int score, Integer[] customers) {
+		tourRepository.findById(tourId).ifPresent(tour -> {
+			for(Integer c : customers) {
+				tourRatingRepository.save(new TourRating(tour, c, score));
+			}
+		});
+	}
 	/**
 	 * @param tourId
 	 * @param customerId
