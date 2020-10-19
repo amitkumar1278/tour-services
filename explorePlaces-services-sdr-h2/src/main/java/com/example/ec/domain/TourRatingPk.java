@@ -12,7 +12,12 @@ import java.io.Serializable;
  */
 @Embeddable
 public class TourRatingPk implements Serializable {
-    @ManyToOne
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	@ManyToOne
     private Tour tour;
 
     @Column(insertable = false, updatable = false,nullable = false)

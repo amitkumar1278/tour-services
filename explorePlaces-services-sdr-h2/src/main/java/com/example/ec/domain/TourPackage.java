@@ -3,6 +3,8 @@ package com.example.ec.domain;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Table;
+
 import java.io.Serializable;
 import java.util.Objects;
 
@@ -11,9 +13,16 @@ import java.util.Objects;
  *
  * @author amit
  */
+
+@Table(name = "tour_package")
 @Entity
 public class TourPackage implements Serializable {
-    @Id
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	@Id
     private String code;
 
     @Column
