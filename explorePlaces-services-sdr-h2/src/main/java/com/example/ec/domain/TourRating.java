@@ -35,6 +35,9 @@ public class TourRating {
     @Column
     private String comment;
 
+    protected TourRating() {
+    }
+
     /**
      * Create a fully initialized TourRating.
      *
@@ -48,9 +51,6 @@ public class TourRating {
         this.customerId = customerId;
         this.score = score;
         this.comment = comment;
-    }
-
-    protected TourRating() {
     }
 
     /**
@@ -192,3 +192,4 @@ public class TourRating {
  
 
 }
+
