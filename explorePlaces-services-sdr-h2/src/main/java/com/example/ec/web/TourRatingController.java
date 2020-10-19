@@ -14,7 +14,7 @@ import java.util.stream.*;
 /**
  * Tour Rating Controller
  *
- * Created by Mary Ellen Bowman
+ * @author amit
  */
 @RestController
 @RequestMapping(path = "/tours/{tourId}/ratings")

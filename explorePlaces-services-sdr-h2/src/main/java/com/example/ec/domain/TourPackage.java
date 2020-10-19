@@ -9,7 +9,7 @@ import java.util.Objects;
 /**
  * A Classification of Tours.
  *
- * Created by Mary Ellen Bowman
+ * @author amit
  */
 @Entity
 public class TourPackage implements Serializable {

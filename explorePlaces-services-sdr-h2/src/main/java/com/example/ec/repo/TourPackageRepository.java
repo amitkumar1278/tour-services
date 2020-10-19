@@ -11,7 +11,7 @@ import java.util.Optional;
 /**
  * Tour Package Repository Interface
  *
- * Created by Mary Ellen Bowman
+ * @author amit
  */
 @RepositoryRestResource(collectionResourceRel = "packages", path = "packages")
 public interface TourPackageRepository extends CrudRepository<TourPackage, String> {
