@@ -4,6 +4,8 @@ import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.OptionalDouble;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -20,6 +22,7 @@ import com.example.ec.repo.TourRepository;
  * @author amit
  */
 @Service
+@Transactional
 public class TourRatingService {
 
 	private TourRatingRepository tourRatingRepository;
