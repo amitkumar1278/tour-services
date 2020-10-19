@@ -10,7 +10,8 @@ import javax.validation.constraints.Size;
  *
  * @author amit
  */
-public class RatingDto {
+
+public class RatingDto  {
 
     @Min(0)
     @Max(5)
@@ -25,9 +26,9 @@ public class RatingDto {
     /**
      * Constructor to fully initialize the RatingDto
      *
-     * @param score
-     * @param comment
-     * @param customerId
+     * @param score score
+     * @param comment comment
+     * @param customerId customer identifier
      */
     public RatingDto(Integer score, String comment, Integer customerId) {
         this.score = score;
