@@ -2,10 +2,13 @@ package com.example.ec.service;
 
 import java.util.List;
 import java.util.NoSuchElementException;
+import java.util.Optional;
 import java.util.OptionalDouble;
 
 import javax.transaction.Transactional;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -25,6 +28,7 @@ import com.example.ec.repo.TourRepository;
 @Transactional
 public class TourRatingService {
 
+    private static final Logger LOGGER = LoggerFactory.getLogger(TourRatingService.class);
 	private TourRatingRepository tourRatingRepository;
 	private TourRepository tourRepository;
 
@@ -50,9 +54,31 @@ public class TourRatingService {
 	 * @throws NoSuchElementException if no Tour found.
 	 */
 	public void createNew(int tourId, Integer customerId, Integer score, String comment) throws NoSuchElementException {
-		tourRatingRepository.save(new TourRating(verifyTour(tourId), customerId, score, comment));
+		LOGGER.info("Create Rating for tour {} of customers {}", tourId, customerId);
+		tourRatingRepository.save(new TourRating(verifyTour(tourId), customerId, 
+				score, comment));
 	}
+	
 
+    /**
+     * Get a ratings by id.
+     *
+     * @param id rating identifier
+     * @return TourRatings
+     */
+	public Optional<TourRating> lookupRatingById(int id){
+		return tourRatingRepository.findById(id);
+	}
+	
+    /**
+     * Get All Ratings.
+     *
+     * @return List of TourRatings
+     */
+	public List<TourRating> lookupAll(){
+		LOGGER.info("Lookup all Ratings");
+		return tourRatingRepository.findAll();
+	}
 	/**
 	 * Get a page of tour ratings for a tour.
 	 *
@@ -62,6 +88,7 @@ public class TourRatingService {
 	 * @throws NoSuchElementException if no Tour found.
 	 */
 	public Page<TourRating> lookupRatings(int tourId, Pageable pageable) throws NoSuchElementException {
+		LOGGER.info("Lookup Rating for tour {}", tourId);
 		return tourRatingRepository.findByTourId(verifyTour(tourId).getId(), pageable);
 	}
 
