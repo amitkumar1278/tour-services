@@ -9,9 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.tour.sb.ms</groupId>
-	<artifactId>explore-world-ms-sdr-mongo</artifactId>
+	<artifactId>basic-explorePlaces-service-sdr-mongo</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>explore-world-ms-sdr-mongo</name>
+	<name>basic-explorePlaces-service-sdr-mongo</name>
 	<description>Demo  Spring Boot microservice for exploring the world</description>
 
 	<properties>
