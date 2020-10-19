@@ -1,4 +1,3 @@
-
 insert into tour_package (code, name) values
 ('BC', 'Backpack Cal'),
 ('CC', 'California Calm'),
@@ -9,8 +8,6 @@ insert into tour_package (code, name) values
 ('NW', 'Nature Watch'),
 ('SC', 'Snowboard Cali'),
 ('TC', 'Taste of California');
-
-
 
 insert into tour  (tour_package_code, title, description, blurb, bullets, difficulty, duration, price, region, keywords) values
   (
@@ -25,9 +22,6 @@ insert into tour  (tour_package_code, title, description, blurb, bullets, diffic
     'Central Coast',
     'Hiking, National Parks, Big Sur'
   );
-
-
-
   insert into tour  (tour_package_code, title, description, blurb, bullets, difficulty, duration, price, region, keywords) values
 
   (
@@ -42,9 +36,6 @@ insert into tour  (tour_package_code, title, description, blurb, bullets, diffic
     'Northern California',
     'Hiking, National Parks, Yosemite, John Muir, Camping'
   );
-
-
-
   insert into tour  (tour_package_code, title, description, blurb, bullets, difficulty, duration, price, region, keywords) values
 
   (
@@ -59,9 +50,6 @@ insert into tour  (tour_package_code, title, description, blurb, bullets, diffic
     'Varies',
     'Hiking, Desert, Camping, Mojave, Death Valley'
   );
-
-
-
   insert into tour  (tour_package_code, title, description, blurb, bullets, difficulty, duration, price, region, keywords) values
 
   (
@@ -88,9 +76,6 @@ insert into tour  (tour_package_code, title, description, blurb, bullets, diffic
     'Southern California',
     'Channel Islands, Boating, Whale watching, Hiking'
   );
-
-
-
   insert into tour  (tour_package_code, title, description, blurb, bullets, difficulty, duration, price, region, keywords) values
 
   (
@@ -129,9 +114,6 @@ insert into tour  (tour_package_code, title, description, blurb, bullets, diffic
     'Southern California',
     'Spa, Relaxation, Art, Yoga'
   );
-
-
-
   insert into tour  (tour_package_code, title, description, blurb, bullets, difficulty, duration, price, region, keywords) values
 
   (
@@ -146,9 +128,6 @@ insert into tour  (tour_package_code, title, description, blurb, bullets, diffic
     'Central Coast',
     'Hot springs, hiking, cabin, beach, kayaking, hiking'
   );
-
-
-
   insert into tour  (tour_package_code, title, description, blurb, bullets, difficulty, duration, price, region, keywords) values
 
   (
@@ -163,9 +142,6 @@ insert into tour  (tour_package_code, title, description, blurb, bullets, diffic
     'Central Coast',
     'Hot springs, Ojai, hiking, swimming, rustic, nature'
   );
-
-
-
   insert into tour  (tour_package_code, title, description, blurb, bullets, difficulty, duration, price, region, keywords) values
 
   (
@@ -180,9 +156,6 @@ insert into tour  (tour_package_code, title, description, blurb, bullets, diffic
     'Central Coast',
     'Hot springs, Spa treatment, Bed and breakfast'
   );
-
-
-
   insert into tour  (tour_package_code, title, description, blurb, bullets, difficulty, duration, price, region, keywords) values
 
   (
@@ -221,9 +194,6 @@ insert into tour  (tour_package_code, title, description, blurb, bullets, diffic
     'Varies',
     'Cycling'
   );
-
-
-
   insert into tour  (tour_package_code, title, description, blurb, bullets, difficulty, duration, price, region, keywords) values
 
   (
@@ -238,9 +208,6 @@ insert into tour  (tour_package_code, title, description, blurb, bullets, diffic
     'Southern California',
     'Boating, Fishing, Bird watching, Desert, Sea, Eco-Tour'
   );
-
-
-
   insert into tour  (tour_package_code, title, description, blurb, bullets, difficulty, duration, price, region, keywords) values
 
   (
@@ -255,9 +222,6 @@ insert into tour  (tour_package_code, title, description, blurb, bullets, diffic
     'Southern California',
     'Motorcycle, Cycling, Mountains, Desert, Sea'
   );
-
-
-
   insert into tour  (tour_package_code, title, description, blurb, bullets, difficulty, duration, price, region, keywords) values
 
   (
@@ -272,9 +236,6 @@ insert into tour  (tour_package_code, title, description, blurb, bullets, diffic
     'Southern California',
     'Hiking, Desert, Sea, California History, Theme park'
   );
-
-
-
   insert into tour  (tour_package_code, title, description, blurb, bullets, difficulty, duration, price, region, keywords) values
 
   (
@@ -289,9 +250,6 @@ insert into tour  (tour_package_code, title, description, blurb, bullets, diffic
     'Southern California',
     'Kid friendly, Museum,  Animals, Theme park'
   );
-
-
-
   insert into tour  (tour_package_code, title, description, blurb, bullets, difficulty, duration, price, region, keywords) values
 
   (
@@ -306,9 +264,6 @@ insert into tour  (tour_package_code, title, description, blurb, bullets, diffic
     'Southern California',
     'California History, Kid friendly, Museum, Hiking, Animals'
   );
-
-
-
   insert into tour  (tour_package_code, title, description, blurb, bullets, difficulty, duration, price, region, keywords) values
 
   (
@@ -359,9 +314,6 @@ insert into tour  (tour_package_code, title, description, blurb, bullets, diffic
    'Varies',
     'Eco Tour, California History, Animals, Boating, Hiking'
   );
-
-
-
   insert into tour  (tour_package_code, title, description, blurb, bullets, difficulty, duration, price, region, keywords) values
 
   (
@@ -376,9 +328,6 @@ insert into tour  (tour_package_code, title, description, blurb, bullets, diffic
     'Southern California',
     'Skiing, Snowboarding, Cabin, Hiking, Mountains'
   );
-
-
-
   insert into tour  (tour_package_code, title, description, blurb, bullets, difficulty, duration, price, region, keywords) values
 
   (
@@ -393,9 +342,6 @@ insert into tour  (tour_package_code, title, description, blurb, bullets, diffic
     'Southern California',
     'Skiing, Snowboarding, Cabin, Hiking, Mountains'
   );
-
-
-
   insert into tour  (tour_package_code, title, description, blurb, bullets, difficulty, duration, price, region, keywords) values
 
   (
@@ -422,9 +368,6 @@ insert into tour  (tour_package_code, title, description, blurb, bullets, diffic
     'Southern California',
     'Tasting, Olive Oil, California History, Picnic, Nature, Farming'
   );
-
-
-
   insert into tour  (tour_package_code, title, description, blurb, bullets, difficulty, duration, price, region, keywords) values
 
   (
@@ -465,9 +408,13 @@ insert into tour  (tour_package_code, title, description, blurb, bullets, diffic
   );
 
 
-
-
   insert into tour_rating (tour_id, customer_id, score, comment) values
   (1, 4, 5, 'I loved it'),
+  (1, 5, 5, 'We loved it'),
+  (1, 6, 5, 'She loved it'),
+  (1, 7, 5, 'He loved it'),
+  (1, 8, 5, 'They loved it'),
+  (1, 9, 5, 'Everbody loved it'),
+  (1, 10, 1, 'I hated it'),
+  (1, 11, 1, 'We hated it'),
   (2, 100, 5, 'I really thought it could have been better');
-
