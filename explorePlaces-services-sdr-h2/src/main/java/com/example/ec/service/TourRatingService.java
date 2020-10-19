@@ -1,5 +1,6 @@
 package com.example.ec.service;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Optional;
@@ -104,6 +105,7 @@ public class TourRatingService {
 	public TourRating update(int tourId, Integer customerId, Integer score, String comment)
 			throws NoSuchElementException {
 
+		LOGGER.info("Update all of Rating for tour {} of customers {}", tourId, customerId);
 		TourRating rating = verifyTourRating(tourId, customerId);
 		rating.setScore(score);
 		rating.setComment(comment);
@@ -124,6 +126,7 @@ public class TourRatingService {
 	public TourRating updateSome(int tourId, Integer customerId, Integer score, String comment)
 			throws NoSuchElementException {
 
+		LOGGER.info("Update some of rating for tour {} of customers {}", tourId, customerId);
 		TourRating rating = verifyTourRating(tourId, customerId);
 
 		if (score != null) {
@@ -145,6 +148,8 @@ public class TourRatingService {
      * @throws NoSuchElementException if no Tour found.
      */
 	public void delete(int tourId, Integer customerId) throws NoSuchElementException {
+		
+		LOGGER.info("Delete Rating for tour {} and customer {}", tourId, customerId);
 		TourRating rating = verifyTourRating(tourId, customerId);
 		tourRatingRepository.delete(rating);
 	}
@@ -158,6 +163,7 @@ public class TourRatingService {
      */
 	public Double getAverageScore(int tourId) throws NoSuchElementException {
 		
+		LOGGER.info("Get average score of tour {} ", tourId);
 		List<TourRating> ratings = tourRatingRepository.findByTourId(verifyTour(tourId).getId());
 		OptionalDouble average = ratings.stream().mapToInt((rating) ->  rating.getScore()).average();
 		return average.isPresent() ?  average.getAsDouble():null;
@@ -172,8 +178,11 @@ public class TourRatingService {
      * @param customers
      */
 	public void rateMany(int tourId, int score, Integer[] customers) {
+		
+		LOGGER.info("Rate tour {} by customers {}", tourId, Arrays.asList(customers).toString());
 		tourRepository.findById(tourId).ifPresent(tour -> {
 			for(Integer c : customers) {
+				LOGGER.debug("Attempt to create Tour RAting for customer {}", c);
 				tourRatingRepository.save(new TourRating(tour, c, score));
 			}
 		});
