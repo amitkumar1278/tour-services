@@ -30,6 +30,7 @@ import com.example.ec.repo.TourRepository;
 public class TourRatingService {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(TourRatingService.class);
+    
 	private TourRatingRepository tourRatingRepository;
 	private TourRepository tourRepository;
 
