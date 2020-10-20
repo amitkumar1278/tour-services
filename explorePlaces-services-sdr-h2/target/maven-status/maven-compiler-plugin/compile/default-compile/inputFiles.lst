@@ -8,7 +8,7 @@
 /home/amit/git/tour-services/explorePlaces-services-sdr-h2/src/main/java/com/example/ec/domain/TourPackage.java
 /home/amit/git/tour-services/explorePlaces-services-sdr-h2/src/main/java/com/example/ec/domain/Region.java
 /home/amit/git/tour-services/explorePlaces-services-sdr-h2/src/main/java/com/example/ec/repo/TourPackageRepository.java
+/home/amit/git/tour-services/explorePlaces-services-sdr-h2/src/main/java/com/example/ec/web/RatingController.java
 /home/amit/git/tour-services/explorePlaces-services-sdr-h2/src/main/java/com/example/ec/ExplorePlacesApplication.java
 /home/amit/git/tour-services/explorePlaces-services-sdr-h2/src/main/java/com/example/ec/repo/TourRatingRepository.java
-/home/amit/git/tour-services/explorePlaces-services-sdr-h2/src/main/java/com/example/ec/domain/TourRatingPk.java
 /home/amit/git/tour-services/explorePlaces-services-sdr-h2/src/main/java/com/example/ec/domain/TourRating.java

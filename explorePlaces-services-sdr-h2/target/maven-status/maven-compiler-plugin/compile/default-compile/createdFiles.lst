@@ -5,7 +5,7 @@ com/example/ec/ExplorePlacesApplication.class
 com/example/ec/repo/TourRatingRepository.class
 com/example/ec/web/TourRatingController.class
 com/example/ec/domain/RegionConverter.class
-com/example/ec/domain/TourRatingPk.class
+com/example/ec/web/RatingController.class
 com/example/ec/repo/TourRepository.class
 com/example/ec/domain/TourRating.class
 com/example/ec/domain/Difficulty.class
