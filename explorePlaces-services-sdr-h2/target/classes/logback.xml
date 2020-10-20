@@ -7,4 +7,3 @@
     <!-- Configuring package at log level, and here log level is debug. In production we generally put log level as info -->
     <logger name="com.example.ec" level="DEBUG"/>
 </configuration>
-
