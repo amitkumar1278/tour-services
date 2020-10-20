@@ -7,6 +7,6 @@ package com.example.ec.domain;
  * @author amit
  *
  */
-public class ToueTest {
+public class TourTest {
 
 }
