@@ -180,7 +180,7 @@ public class TourRatingControllerTest {
 	public void updateWithPatch() {
 
 		when(serviceMock.updateSome(TOUR_ID, CUSTOMER_ID, SCORE, COMMENT)).thenReturn(tourRatingMock);
-//		restTemplate.getRestTemplate().setRequestFactory(new HttpComponentsClientHttpRequestFactory());
+		//		restTemplate.getRestTemplate().setRequestFactory(new HttpComponentsClientHttpRequestFactory());
 		restTemplate.patchForObject(TOUR_RATINGS_URL, ratingDto, RatingDto.class);
 
 		verify(serviceMock).updateSome(TOUR_ID, CUSTOMER_ID, SCORE, COMMENT);
