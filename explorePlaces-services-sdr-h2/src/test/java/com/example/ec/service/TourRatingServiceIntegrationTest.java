@@ -102,6 +102,7 @@ public class TourRatingServiceIntegrationTest {
 	 */
 	@Test(expected = DataIntegrityViolationException.class)
 	public void rateManyProveRollback() {
+		@SuppressWarnings("unused")
 		int ratings = service.lookupAll().size();
 		Integer customers[] = {100, 101, 102};
 		service.rateMany(TOUR_ID, 3, customers);
