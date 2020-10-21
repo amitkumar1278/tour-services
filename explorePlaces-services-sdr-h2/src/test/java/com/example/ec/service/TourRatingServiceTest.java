@@ -99,12 +99,14 @@ public class TourRatingServiceTest {
 		assertThat(service.getAverageScore(TOUR_ID), is(10.0));
 	}
 
+	@SuppressWarnings("unchecked")
 	@Test
 	public void lookupRatings() {
 		/**
 		 * Create mocks of Pageable and Page (only needed in this test)
 		 */
 		Pageable pageable = mock(Pageable.class);
+		@SuppressWarnings("rawtypes")
 		Page page = mock(Page.class);
 		when(tourRatingRepositoryMock.findByTourId(1, pageable)).thenReturn(page);
 

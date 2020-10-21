@@ -194,7 +194,7 @@ public class TourRatingService {
 	 * @param customerId
 	 * @return
 	 */
-	private TourRating verifyTourRating(int tourId, Integer customerId) throws NoSuchElementException {
+	public TourRating verifyTourRating(int tourId, Integer customerId) throws NoSuchElementException {
 
 		return tourRatingRepository.findByTourIdAndCustomerId(tourId, customerId)
 				.orElseThrow(() -> new NoSuchElementException(
@@ -208,7 +208,7 @@ public class TourRatingService {
 	 * @return the found Tour
 	 * @throws NoSuchElementException if no Tour found.
 	 */
-	private Tour verifyTour(int tourId) throws NoSuchElementException {
+	public Tour verifyTour(int tourId) throws NoSuchElementException {
 
 		return tourRepository.findById(tourId)
 				.orElseThrow(() -> new NoSuchElementException("Tour does not exist " + tourId));
