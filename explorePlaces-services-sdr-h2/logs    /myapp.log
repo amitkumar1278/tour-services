@@ -42,3 +42,25 @@
 2020-10-21 02:01:52.563  INFO 4225 --- [SpringContextShutdownHook] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
 2020-10-21 02:01:52.565  INFO 4225 --- [SpringContextShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
 2020-10-21 02:01:52.571  INFO 4225 --- [SpringContextShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2020-10-21 10:05:56.668  INFO 5090 --- [main] c.e.ec.ExplorePlacesApplicationTests     : Starting ExplorePlacesApplicationTests on amit-Lenovo-ideapad-520-15IKB with PID 5090 (started by amit in /home/amit/git/tour-services/explorePlaces-services-sdr-h2)
+2020-10-21 10:05:56.680 DEBUG 5090 --- [main] c.e.ec.ExplorePlacesApplicationTests     : Running with Spring Boot v2.3.0.RELEASE, Spring v5.2.6.RELEASE
+2020-10-21 10:05:56.680  INFO 5090 --- [main] c.e.ec.ExplorePlacesApplicationTests     : No active profile set, falling back to default profiles: default
+2020-10-21 10:05:58.331  INFO 5090 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFERRED mode.
+2020-10-21 10:05:58.465  INFO 5090 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 113ms. Found 3 JPA repository interfaces.
+2020-10-21 10:05:59.187  INFO 5090 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2020-10-21 10:05:59.480  INFO 5090 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2020-10-21 10:05:59.812  INFO 5090 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-10-21 10:05:59.946  INFO 5090 --- [task-1] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2020-10-21 10:06:00.118  INFO 5090 --- [task-1] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.4.15.Final
+2020-10-21 10:06:00.436  INFO 5090 --- [task-1] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
+2020-10-21 10:06:00.826  INFO 5090 --- [task-1] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2020-10-21 10:06:01.651  INFO 5090 --- [task-1] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2020-10-21 10:06:01.657  INFO 5090 --- [task-1] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2020-10-21 10:06:02.419  WARN 5090 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2020-10-21 10:06:03.371  INFO 5090 --- [main] DeferredRepositoryInitializationListener : Triggering deferred initialization of Spring Data repositories…
+2020-10-21 10:06:03.559  INFO 5090 --- [main] DeferredRepositoryInitializationListener : Spring Data repositories initialized!
+2020-10-21 10:06:03.567  INFO 5090 --- [main] c.e.ec.ExplorePlacesApplicationTests     : Started ExplorePlacesApplicationTests in 7.306 seconds (JVM running for 10.033)
+2020-10-21 10:06:03.872  INFO 5090 --- [SpringContextShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2020-10-21 10:06:03.889  INFO 5090 --- [SpringContextShutdownHook] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2020-10-21 10:06:03.890  INFO 5090 --- [SpringContextShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2020-10-21 10:06:03.906  INFO 5090 --- [SpringContextShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
