@@ -1,5 +1,7 @@
+com/example/ec/domain/User.class
 com/example/ec/domain/Region.class
 com/example/ec/web/RatingDto.class
+com/example/ec/domain/Role.class
 com/example/ec/repo/TourPackageRepository.class
 com/example/ec/ExplorePlacesApplication.class
 com/example/ec/repo/TourRatingRepository.class
@@ -12,3 +14,4 @@ com/example/ec/domain/Difficulty.class
 com/example/ec/domain/Tour.class
 com/example/ec/domain/TourPackage.class
 com/example/ec/service/TourRatingService.class
+com/example/ec/repo/UserRepository.class

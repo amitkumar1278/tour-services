@@ -17,7 +17,7 @@ import java.util.Optional;
  * @author amit
  */
 @RepositoryRestResource(collectionResourceRel = "packages", path = "packages")
-@Tag(name = "Tour Package", description = "The Tour Package API")
+//@Tag(name = "Tour Package", description = "The Tour Package API") 
 public interface TourPackageRepository extends CrudRepository<TourPackage, String> {
 
     /**

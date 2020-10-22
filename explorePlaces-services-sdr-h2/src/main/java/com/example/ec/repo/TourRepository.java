@@ -15,7 +15,7 @@ import org.springframework.data.rest.core.annotation.RestResource;
  *
  * @author amit
  */
-@Tag(name = "Tours", description = "The Tour API")
+//@Tag(name = "Tours", description = "The Tour API") // this is for swagger only
 public interface TourRepository extends PagingAndSortingRepository<Tour,Integer> {
 
     /**
