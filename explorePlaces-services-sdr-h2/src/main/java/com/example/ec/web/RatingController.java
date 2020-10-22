@@ -20,6 +20,11 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.example.ec.service.TourRatingService;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import io.swagger.v3.oas.annotations.tags.Tag;
+
 /**
  * @author amit
  *
@@ -27,6 +32,7 @@ import com.example.ec.service.TourRatingService;
 
 @RestController
 @RequestMapping(path = "/ratings")
+@Tag(name = "Rating", description = "The Rating API")
 public class RatingController {
 	
 	private static final Logger LOGGER = LoggerFactory.getLogger(RatingController.class);
@@ -44,6 +50,8 @@ public class RatingController {
 	 * @return
 	 */
 	@GetMapping
+	@Operation(summary = "Find all ratings")
+	@ApiResponses(value = { @ApiResponse(responseCode = "200", description = "OK")})
 	public List<RatingDto> getAll(){
 		
 		LOGGER.info("GET /ratings");
@@ -57,6 +65,9 @@ public class RatingController {
 	 * @return
 	 */
 	@GetMapping("/{id}")
+	@Operation(summary = "Find ratings by id")
+	@ApiResponses(value = { @ApiResponse(responseCode = "200", description = "OK"),
+							@ApiResponse(responseCode = "404", description = "Rating not found")})
 	public RatingDto getRating(@PathVariable("id") Integer id) {
 		
 		LOGGER.info("GET /ratings/{id}", id);

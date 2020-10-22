@@ -29,13 +29,6 @@ public class TourRating {
     @Column(name = "customer_id")
     private Integer customerId;
     
-    /**
-	 * @return the id
-	 */
-	public Integer getId() {
-		return id;
-	}
-
 	@Column(nullable = false)
     private Integer score;
 
@@ -92,6 +85,15 @@ public class TourRating {
         }
     }
 
+    
+    /**
+	 * @return the id
+	 */
+	public Integer getId() {
+		return id;
+	}
+	
+	
 	/**
 	 * @return the tour
 	 */
