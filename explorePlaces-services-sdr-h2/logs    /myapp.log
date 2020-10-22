@@ -8587,3 +8587,31 @@ insert into tour_rating (id, comment, customer_id, score, tour_id) values (null,
 2020-10-22 22:44:47.674  INFO 25466 --- [RMI TCP Connection(202)-127.0.0.1] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
 2020-10-22 22:44:47.674  INFO 25466 --- [RMI TCP Connection(202)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
 2020-10-22 22:44:47.676  INFO 25466 --- [RMI TCP Connection(202)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2020-10-22 22:54:16.472  INFO 31763 --- [main] com.example.ec.ExplorePlacesApplication  : Starting ExplorePlacesApplication on amit-Lenovo-ideapad-520-15IKB with PID 31763 (/home/amit/git/tour-services/explorePlaces-services-sdr-h2/target/classes started by amit in /home/amit/git/tour-services/explorePlaces-services-sdr-h2)
+2020-10-22 22:54:16.475 DEBUG 31763 --- [main] com.example.ec.ExplorePlacesApplication  : Running with Spring Boot v2.3.0.RELEASE, Spring v5.2.6.RELEASE
+2020-10-22 22:54:16.476  INFO 31763 --- [main] com.example.ec.ExplorePlacesApplication  : No active profile set, falling back to default profiles: default
+2020-10-22 22:54:17.668  INFO 31763 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFERRED mode.
+2020-10-22 22:54:17.741  INFO 31763 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 62ms. Found 3 JPA repository interfaces.
+2020-10-22 22:54:18.673  INFO 31763 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2020-10-22 22:54:18.686  INFO 31763 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-10-22 22:54:18.686  INFO 31763 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.35]
+2020-10-22 22:54:18.805  INFO 31763 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2020-10-22 22:54:18.805  INFO 31763 --- [main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 2271 ms
+2020-10-22 22:54:18.986  INFO 31763 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2020-10-22 22:54:19.211  INFO 31763 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2020-10-22 22:54:19.502  INFO 31763 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-10-22 22:54:19.578  INFO 31763 --- [task-1] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2020-10-22 22:54:19.663  INFO 31763 --- [task-1] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.4.15.Final
+2020-10-22 22:54:19.938  INFO 31763 --- [task-1] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
+2020-10-22 22:54:20.084  INFO 31763 --- [task-1] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2020-10-22 22:54:20.867  INFO 31763 --- [task-1] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2020-10-22 22:54:20.876  INFO 31763 --- [task-1] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2020-10-22 22:54:21.425  WARN 31763 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2020-10-22 22:54:23.029  INFO 31763 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2020-10-22 22:54:23.030  INFO 31763 --- [main] DeferredRepositoryInitializationListener : Triggering deferred initialization of Spring Data repositories…
+2020-10-22 22:54:23.215  INFO 31763 --- [main] DeferredRepositoryInitializationListener : Spring Data repositories initialized!
+2020-10-22 22:54:23.233  INFO 31763 --- [main] com.example.ec.ExplorePlacesApplication  : Started ExplorePlacesApplication in 7.141 seconds (JVM running for 7.879)
+2020-10-22 22:54:46.347  INFO 31763 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-10-22 22:54:46.347  INFO 31763 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2020-10-22 22:54:46.370  INFO 31763 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 23 ms
+2020-10-22 22:54:47.994  INFO 31763 --- [http-nio-8080-exec-7] o.springdoc.api.AbstractOpenApiResource  : Init duration for springdoc-openapi is: 1020 ms
