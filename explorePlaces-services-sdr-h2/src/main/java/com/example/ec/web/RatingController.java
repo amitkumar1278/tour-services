@@ -32,7 +32,7 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 
 @RestController
 @RequestMapping(path = "/ratings")
-@Tag(name = "Rating", description = "The Rating API")
+//@Tag(name = "Rating", description = "The Rating API")
 public class RatingController {
 	
 	private static final Logger LOGGER = LoggerFactory.getLogger(RatingController.class);
@@ -50,8 +50,8 @@ public class RatingController {
 	 * @return
 	 */
 	@GetMapping
-	@Operation(summary = "Find all ratings")
-	@ApiResponses(value = { @ApiResponse(responseCode = "200", description = "OK")})
+//	@Operation(summary = "Find all ratings")
+//	@ApiResponses(value = { @ApiResponse(responseCode = "200", description = "OK")})
 	public List<RatingDto> getAll(){
 		
 		LOGGER.info("GET /ratings");
@@ -65,9 +65,9 @@ public class RatingController {
 	 * @return
 	 */
 	@GetMapping("/{id}")
-	@Operation(summary = "Find ratings by id")
-	@ApiResponses(value = { @ApiResponse(responseCode = "200", description = "OK"),
-							@ApiResponse(responseCode = "404", description = "Rating not found")})
+//	@Operation(summary = "Find ratings by id")
+//	@ApiResponses(value = { @ApiResponse(responseCode = "200", description = "OK"),
+//							@ApiResponse(responseCode = "404", description = "Rating not found")})
 	public RatingDto getRating(@PathVariable("id") Integer id) {
 		
 		LOGGER.info("GET /ratings/{id}", id);
