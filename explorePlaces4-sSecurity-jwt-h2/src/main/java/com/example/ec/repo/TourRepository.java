@@ -13,7 +13,6 @@ import com.example.ec.domain.Tour;
  *
  * @author amit
  */
-//@Tag(name = "Tours", description = "The Tour API") // this is for swagger only
 public interface TourRepository extends PagingAndSortingRepository<Tour,Integer> {
 
     /**

@@ -26,7 +26,6 @@ import com.example.ec.repo.TourRepository;
  * @author amit
  */
 @Service
-//@Transactional
 public class TourRatingService {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(TourRatingService.class);
@@ -178,7 +177,6 @@ public class TourRatingService {
      * @param score
      * @param customers
      */
-//	@Transactional
 	public void rateMany(int tourId, int score, Integer[] customers) {
 		
 		LOGGER.info("Rate tour {} by customers {}", tourId, Arrays.asList(customers).toString());
