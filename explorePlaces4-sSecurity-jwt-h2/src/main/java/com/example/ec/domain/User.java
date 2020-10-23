@@ -3,6 +3,7 @@
  */
 package com.example.ec.domain;
 
+import java.util.Arrays;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -70,6 +71,24 @@ public class User {
 		this.username = username;
 		this.password = password;
 		this.roles = roles;
+	}
+
+	
+	
+	/**
+	 * @param username
+	 * @param password
+	 * @param firstName
+	 * @param lastName
+	 * @param roles
+	 */
+	public User(String username, String password, Role role, String firstName, String lastName) {
+		super();
+		this.username = username;
+		this.password = password;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.roles = Arrays.asList(role);
 	}
 
 	/**
