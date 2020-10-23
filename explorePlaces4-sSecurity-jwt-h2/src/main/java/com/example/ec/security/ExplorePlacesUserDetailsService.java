@@ -29,7 +29,6 @@ public class ExplorePlacesUserDetailsService implements UserDetailsService {
 	
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-		// TODO Auto-generated method stub
 		
 		User user = userRepository.findByUsername(username)
 					.orElseThrow(() -> new UsernameNotFoundException(String.format("User with name %s does not exist", username)));
