@@ -3,14 +3,14 @@
  */
 package com.example.ec.domain;
 
-import java.io.Serializable;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+
+import org.springframework.security.core.GrantedAuthority;
 
 /**
  * Entity of a Security Role
@@ -21,7 +21,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "security_role")
-public class Role implements Serializable{
+public class Role implements GrantedAuthority{
 
 	/**
 	 * 
@@ -38,6 +38,7 @@ public class Role implements Serializable{
 	@Column(name = "description")
 	private String description;
 
+    
 	/**
 	 * @return the id
 	 */
@@ -78,6 +79,12 @@ public class Role implements Serializable{
 	 */
 	public void setDescription(String description) {
 		this.description = description;
+	}
+
+	@Override
+	public String getAuthority() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	

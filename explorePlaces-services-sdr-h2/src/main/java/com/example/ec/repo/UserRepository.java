@@ -14,7 +14,7 @@ import com.example.ec.domain.User;
  * @author amit
  *
  */
-@RepositoryRestResource(exported = true)
+@RepositoryRestResource(exported = false)
 public interface UserRepository extends JpaRepository<User, Integer>{
 
 	Optional<User> findByUsername(String username);
