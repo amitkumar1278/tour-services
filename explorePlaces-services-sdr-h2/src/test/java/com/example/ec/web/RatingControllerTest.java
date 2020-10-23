@@ -10,10 +10,7 @@ import static org.mockito.Mockito.when;
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.NoSuchElementException;
 import java.util.Optional;
-
-import javax.servlet.http.HttpSession;
 
 import org.junit.Before;
 import org.junit.Test;
