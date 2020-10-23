@@ -46,10 +46,12 @@ public class TourRatingServiceTest {
 	@Mock
 	private TourRatingRepository tourRatingRepositoryMock;
 
-	@InjectMocks // Autowire
+	@InjectMocks // Autowire TourRatingService(tourRatingRepositoryMock, tourRepositoryMock)
 	private TourRatingService service;
+	
 	@Mock
 	private Tour tourMock;
+	
 	@Mock
 	private TourRating tourRatingMock;
 
