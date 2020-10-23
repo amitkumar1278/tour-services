@@ -30,9 +30,6 @@ import org.springframework.web.bind.annotation.RestController;
 import com.example.ec.domain.TourRating;
 import com.example.ec.service.TourRatingService;
 
-import io.swagger.v3.oas.annotations.Operation;
-import io.swagger.v3.oas.annotations.tags.Tag;
-
 /**
  * Tour Rating Controller
  *
