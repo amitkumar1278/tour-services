@@ -5,11 +5,11 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.example.ec</groupId>
-	<artifactId>explorePlaces3-rest-sdr-junt-swgr-lgr-h2</artifactId>
+	<artifactId>explorePlaces3-junt-swgr-lgr-h2</artifactId>
 	<version>3.0.0-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
-	<name>explorePlaces3-rest-sdr-junt-swgr-lgr-h2</name>
+	<name>explorePlaces3-junt-swgr-lgr-h2</name>
 	<description>Explore Places Microservice</description>
 
 	<parent>
