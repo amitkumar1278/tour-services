@@ -1,6 +1,6 @@
 Manifest-Version: 1.0
 Build-Jdk-Spec: 14
-Implementation-Title: explorePlaces-services-sdr-h2
+Implementation-Title: explorePlaces3-rest-sdr-junt-swgr-lgr-h2
 Implementation-Version: 3.0.0-SNAPSHOT
 Implementation-Vendor: Pivotal Software, Inc.
 Created-By: Maven Integration for Eclipse

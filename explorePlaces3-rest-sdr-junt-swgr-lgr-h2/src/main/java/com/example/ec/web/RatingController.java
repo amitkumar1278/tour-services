@@ -20,6 +20,11 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.example.ec.service.TourRatingService;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import io.swagger.v3.oas.annotations.tags.Tag;
+
 /**
  * @author amit
  *
@@ -27,12 +32,12 @@ import com.example.ec.service.TourRatingService;
 
 @RestController
 @RequestMapping(path = "/ratings")
-//@Tag(name = "Rating", description = "The Rating API")
+@Tag(name = "Rating", description = "The Rating API")
 public class RatingController {
-	
+
 	private static final Logger LOGGER = LoggerFactory.getLogger(RatingController.class);
 	private TourRatingService tourRatingService;
-	
+
 	/**
 	 * @param tourRatingService
 	 */
@@ -40,50 +45,50 @@ public class RatingController {
 	public RatingController(TourRatingService tourRatingService) {
 		this.tourRatingService = tourRatingService;
 	}
-	
+
 	/**
 	 * @return
 	 */
 	@GetMapping
-//	@Operation(summary = "Find all ratings")
-//	@ApiResponses(value = { @ApiResponse(responseCode = "200", description = "OK")})
+	@Operation(summary = "Find all ratings")
+	@ApiResponses(value = { @ApiResponse(responseCode = "200", description = "OK")})
 	public List<RatingDto> getAll(){
-		
+
 		LOGGER.info("GET /ratings");
 		return tourRatingService.lookupAll()
 				.stream().map(t -> new RatingDto(t.getScore(), t.getComment(), t.getCustomerId()))
 				.collect(Collectors.toList());
 	}
-	
+
 	/**
 	 * @param id
 	 * @return
 	 */
 	@GetMapping("/{id}")
-//	@Operation(summary = "Find ratings by id")
-//	@ApiResponses(value = { @ApiResponse(responseCode = "200", description = "OK"),
-//							@ApiResponse(responseCode = "404", description = "Rating not found")})
+	@Operation(summary = "Find ratings by id")
+	@ApiResponses(value = { @ApiResponse(responseCode = "200", description = "OK"),
+			@ApiResponse(responseCode = "404", description = "Rating not found")})
 	public RatingDto getRating(@PathVariable("id") Integer id) {
-		
+
 		LOGGER.info("GET /ratings/{id}", id);
 		return tourRatingService.lookupRatingById(id)
 				.map(t -> new RatingDto(t.getScore(), t.getComment(), t.getCustomerId()))
 				.orElseThrow(() -> new NoSuchElementException("Rating " + id + " not found"));
 	}
-	
-    /**
-     * Exception handler if NoSuchElementException is thrown in this Controller
-     *
-     * @param ex exception
-     * @return Error message String.
-     */
+
+	/**
+	 * Exception handler if NoSuchElementException is thrown in this Controller
+	 *
+	 * @param ex exception
+	 * @return Error message String.
+	 */
 	@ResponseStatus(HttpStatus.NOT_FOUND)
 	@ExceptionHandler(NoSuchElementException.class)
 	public String return404(NoSuchElementException ex) {
-		
+
 		LOGGER.error("Unable to complete transaction", ex);
 		return ex.getMessage();
 	}
-	
+
 
 }

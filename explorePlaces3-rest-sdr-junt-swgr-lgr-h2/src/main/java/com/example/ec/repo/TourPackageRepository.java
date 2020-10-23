@@ -9,13 +9,15 @@ import org.springframework.data.rest.core.annotation.RestResource;
 
 import com.example.ec.domain.TourPackage;
 
+import io.swagger.v3.oas.annotations.tags.Tag;
+
 /**
  * Tour Package Repository Interface
  *
  * @author amit
  */
 @RepositoryRestResource(collectionResourceRel = "packages", path = "packages")
-//@Tag(name = "Tour Package", description = "The Tour Package API") 
+@Tag(name = "Tour Package", description = "The Tour Package API") 
 public interface TourPackageRepository extends CrudRepository<TourPackage, String> {
 
     /**

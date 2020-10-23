@@ -8,12 +8,14 @@ import org.springframework.data.rest.core.annotation.RestResource;
 
 import com.example.ec.domain.Tour;
 
+import io.swagger.v3.oas.annotations.tags.Tag;
+
 /**
  * Tour Repository Interface
  *
  * @author amit
  */
-//@Tag(name = "Tours", description = "The Tour API") // this is for swagger only
+@Tag(name = "Tours", description = "The Tour API") // this is for swagger only
 public interface TourRepository extends PagingAndSortingRepository<Tour,Integer> {
 
     /**
