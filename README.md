@@ -16,10 +16,11 @@ Tour-service is implementation of microservice using Spring and its various modu
 > - Swagger
 > - JWT-Authentication
 
+---
+# Applications
+>**Service having different version of same application, version and there description is below:**
 
-># Service having different version of same application, version and there description is below:
-
->## explorePlaces1-h2
+>## Application 1: explorePlaces1-h2
 - **Used Tech Stack :**
 	JDK 11, Spring Boot, Spring-Web, JPA, Spring-Data, Spring-Data-JPA, Spring Data Rest, H2 Database
 
@@ -37,11 +38,13 @@ Tour-service is implementation of microservice using Spring and its various modu
 		1. Exposed TourPackageRepository and TourRepository API's direct public access except Save and delete method. that means lookup methods are dircetly available to for http call using Spring Data rest.
 		2. gave URI directly at "TourPackageRepository" as "package". means below link is directly accessible: http://localhost:8080/packages
 		3. TourRepository extending PagingAndSortingRepository and there is no restriction on repo level access, that means paging, sorting other search URI http access is possible without exposing any direct API, like below:
+			'
 			http://localhost:8080/tours/search/findByTourPackageCode?code=CC
 			
 			http://localhost:8080/tours?size=3&page=1&sort=title,asc
 			
 			http://localhost:8080/tours/search/findByTourPackageCode?code=CC&size=2&sort=title,asc
+			'
 			
 			Save and delete API are restricted for direct http access.
 		4. Restricted direct http access of TourRatingRepository, can be accessed by exposed API using RestServces or Microservices, implemented few custom repository methods.
@@ -49,15 +52,15 @@ Tour-service is implementation of microservice using Spring and its various modu
 		
 
 
->## explorePlaces2-mongo
+>## Application 2: explorePlaces2-mongo
 
 
 
->## explorePlaces3-junt-swgr-lgr-h2
+>## Application 3: explorePlaces3-junt-swgr-lgr-h2
 
 
 
->## explorePlaces4-sSecurity-jwt-h2
+>## Application 4: explorePlaces4-sSecurity-jwt-h2
 
 
 
