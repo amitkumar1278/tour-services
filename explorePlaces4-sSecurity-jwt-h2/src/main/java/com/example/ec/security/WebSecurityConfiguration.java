@@ -22,13 +22,6 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter{
 
-	@Bean
-	@Override
-	public AuthenticationManager authenticationManagerBean() throws Exception {
-		// TODO Auto-generated method stub
-		return super.authenticationManagerBean();
-	}
-
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 
@@ -39,7 +32,7 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter{
 		.antMatchers("/packages/**").permitAll()
 		.antMatchers("/tours/**").permitAll()
 		.antMatchers("/ratings/**").permitAll()
-		.antMatchers("/user/signin").permitAll()
+		.antMatchers("/users/signin").permitAll()
 		.antMatchers("/v3/api-docs/**", "/swagger-ui/**", "/swagger-ui.html").permitAll()
 		// Disallow everything else..
 		.anyRequest().authenticated();
@@ -54,6 +47,12 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter{
 		 */
 		http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
 
+	}
+
+	@Bean
+	@Override
+	public AuthenticationManager authenticationManagerBean() throws Exception {
+		return super.authenticationManagerBean();
 	}
 
 
