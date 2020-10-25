@@ -11,14 +11,12 @@ import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.security.core.Authentication;
-import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.client.HttpServerErrorException;
 
 import com.example.ec.domain.User;
 import com.example.ec.service.UserService;
@@ -38,15 +36,15 @@ public class UserController {
 	private UserService userService;
 
 	@PostMapping("/signin")
-	public Authentication login(@RequestBody @Valid LoginDto loginDto) {
-		return userService.signin(loginDto.getUsername(), loginDto.getPassword());
+	public String login(@RequestBody @Valid LoginDto loginDto) {
+		return userService.signin(loginDto.getUsername(), loginDto.getPassword())
+				.orElseThrow(() -> new HttpServerErrorException(HttpStatus.FORBIDDEN, "Login Failed"));
 	}
 
 
 	@PostMapping("/signup")
 	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	public User signup(@RequestBody @Valid LoginDto loginDto ) {
-
 		return userService.signup(loginDto.getUsername(), 
 				loginDto.getPassword(), loginDto.getFirstName(), loginDto.getLastName())
 				.orElseThrow(() -> new RuntimeException("User already exists"));
@@ -66,12 +64,12 @@ public class UserController {
 	 * @param ex exception
 	 * @return Error message String.
 	 */
-	@ResponseStatus(HttpStatus.BAD_REQUEST)
-	@ExceptionHandler(RuntimeException.class)
-	public String return400(RuntimeException ex) {
-
-		LOGGER.error("Unable to complete transaction", ex);
-		return ex.getMessage();
-	}
+//	@ResponseStatus(HttpStatus.BAD_REQUEST)
+//	@ExceptionHandler(RuntimeException.class)
+//	public String return400(RuntimeException ex) {
+//
+//		LOGGER.error("Unable to complete transaction", ex);
+//		return ex.getMessage();
+//	}
 
 }
