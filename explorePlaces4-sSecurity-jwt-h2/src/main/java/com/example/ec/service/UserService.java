@@ -49,25 +49,25 @@ public class UserService {
 	}
 
 
-//	public Optional<User> signup(String username, String password, String firstName, String lastName) {
-//
-//		if(!userRepository.findByUsername(username).isPresent()) {
-//
-//			Optional<Role> role = roleRepository.findByRoleName("ROLE_CSR");
-//
-//			return Optional.of(userRepository.save(
-//					new User(username, 
-//							passwordEncoder.encode(password), 
-//							role.get(), 
-//							firstName, 
-//							lastName)));
-//		}
-//
-//		return Optional.empty();
-//	}
-//
-//	public List<User> getAll(){
-//		return userRepository.findAll();
-//	}
+	public Optional<User> signup(String username, String password, String firstName, String lastName) {
+
+		if(!userRepository.findByUsername(username).isPresent()) {
+
+			Optional<Role> role = roleRepository.findByRoleName("ROLE_CSR");
+
+			return Optional.of(userRepository.save(
+					new User(username, 
+							passwordEncoder.encode(password), 
+							role.get(), 
+							firstName, 
+							lastName)));
+		}
+
+		return Optional.empty();
+	}
+
+	public List<User> getAll(){
+		return userRepository.findAll();
+	}
 
 }

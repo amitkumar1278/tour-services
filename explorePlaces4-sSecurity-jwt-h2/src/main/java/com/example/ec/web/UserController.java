@@ -42,36 +42,36 @@ public class UserController {
 		return userService.signin(loginDto.getUsername(), loginDto.getPassword());
 	}
 
-	
-//	@PostMapping("/signup")
-//	@PreAuthorize("hasRole('ROLE_ADMIN')")
-//	public User signup(@RequestBody @Valid LoginDto loginDto ) {
-//
-//		return userService.signup(loginDto.getUsername(), 
-//				loginDto.getPassword(), loginDto.getFirstName(), loginDto.getLastName())
-//				.orElseThrow(() -> new RuntimeException("User already exists"));
-//	}
-//	
-//	
-//	@GetMapping
-//	@PreAuthorize("hasRole('ROLE_ADMIN')")
-//	public List<User> getAllUsers(){
-//		return userService.getAll();
-//	}
-//	
-//	
-//    /**
-//     * Exception handler if NoSuchElementException is thrown in this Controller
-//     *
-//     * @param ex exception
-//     * @return Error message String.
-//     */
-//	@ResponseStatus(HttpStatus.BAD_REQUEST)
-//	@ExceptionHandler(RuntimeException.class)
-//	public String return400(RuntimeException ex) {
-//		
-//		LOGGER.error("Unable to complete transaction", ex);
-//		return ex.getMessage();
-//	}
-	
+
+	@PostMapping("/signup")
+	@PreAuthorize("hasRole('ROLE_ADMIN')")
+	public User signup(@RequestBody @Valid LoginDto loginDto ) {
+
+		return userService.signup(loginDto.getUsername(), 
+				loginDto.getPassword(), loginDto.getFirstName(), loginDto.getLastName())
+				.orElseThrow(() -> new RuntimeException("User already exists"));
+	}
+
+
+	@GetMapping
+	@PreAuthorize("hasRole('ROLE_ADMIN')")
+	public List<User> getAllUsers(){
+		return userService.getAll();
+	}
+
+
+	/**
+	 * Exception handler if NoSuchElementException is thrown in this Controller
+	 *
+	 * @param ex exception
+	 * @return Error message String.
+	 */
+	@ResponseStatus(HttpStatus.BAD_REQUEST)
+	@ExceptionHandler(RuntimeException.class)
+	public String return400(RuntimeException ex) {
+
+		LOGGER.error("Unable to complete transaction", ex);
+		return ex.getMessage();
+	}
+
 }
