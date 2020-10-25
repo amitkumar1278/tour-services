@@ -4,7 +4,7 @@
 package com.example.ec.repo;
 
 import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
+import static junit.framework.TestCase.assertTrue;
 
 import java.util.Optional;
 
