@@ -34,7 +34,7 @@ public class JwtProvider {
 
 	private final String ROLES_KEY = "roles";
 
-//	private JwtParser parser;
+	//	private JwtParser parser;
 
 	private String secretKey;
 
@@ -73,11 +73,12 @@ public class JwtProvider {
 		 * Build the Token
 		 */
 		Date now = new Date();
+		Date expiresAt = new Date(now.getTime() + validityInMilliseconds); 
 
 		return Jwts.builder()
 				.setClaims(claims)
 				.setIssuedAt(now)
-				.setExpiration(new Date(now.getTime() + validityInMilliseconds))
+				.setExpiration(expiresAt)
 				.signWith(SignatureAlgorithm.HS256, secretKey)
 				.compact();
 	}
@@ -93,6 +94,7 @@ public class JwtProvider {
 	public boolean isValidToken(String token) {
 
 		try {
+
 			Jwts.parser().setSigningKey(secretKey).parseClaimsJws(token);
 			return true;
 
@@ -101,29 +103,29 @@ public class JwtProvider {
 		}
 	}
 
-    /**
-     * Get the username from the token string
-     *
-     * @param token jwt
-     * @return username
-     */
+	/**
+	 * Get the username from the token string
+	 *
+	 * @param token jwt
+	 * @return username
+	 */
 	public String getUsername(String token) {
 		return Jwts.parser().setSigningKey(secretKey).parseClaimsJws(token).getBody().getSubject();
 	}
 
 
-    /**
-     * Get the roles from the token string
-     *
-     * @param token jwt
-     * @return username
-     */
+	/**
+	 * Get the roles from the token string
+	 *
+	 * @param token jwt
+	 * @return username
+	 */
 	public List<GrantedAuthority> getRoles(String token){
-		
+
 		@SuppressWarnings("unchecked")
 		List<Map<String, String>> roleClaims = Jwts.parser().setSigningKey(secretKey)
-				.parseClaimsJws(token).getBody().get(ROLES_KEY, List.class);
-		
+		.parseClaimsJws(token).getBody().get(ROLES_KEY, List.class);
+
 		return roleClaims.stream()
 				.map(roleClaim -> new SimpleGrantedAuthority(roleClaim.get("authority")))
 				.collect(Collectors.toList());

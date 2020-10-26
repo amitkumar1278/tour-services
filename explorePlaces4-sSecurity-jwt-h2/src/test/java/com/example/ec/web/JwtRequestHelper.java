@@ -28,15 +28,16 @@ import com.example.ec.security.JwtProvider;
 @Component
 public class JwtRequestHelper {
 
+	@Autowired
 	private static JwtProvider jwtProvider;
 
-	@Autowired
-	private JwtProvider applicationUnderTestJwtProvider;
-
-	@PostConstruct
-	private void initProvider() {
-		jwtProvider = applicationUnderTestJwtProvider;
-	}
+//	@Autowired
+//	private JwtProvider applicationUnderTestJwtProvider;
+//
+//	@PostConstruct
+//	private void initProvider() {
+//		jwtProvider = applicationUnderTestJwtProvider;
+//	}
 
 
 	/**
@@ -47,10 +48,10 @@ public class JwtRequestHelper {
 	 * @param payload
 	 * @return
 	 */
-	@SuppressWarnings({ "unchecked", "rawtypes" })
-	public static HttpEntity loggedInAs(String username, String withRoleId, Object payload) {
-		return new HttpEntity(payload, forUser(username, withRoleId));
-	}
+//	@SuppressWarnings({ "unchecked", "rawtypes" })
+//	public static HttpEntity loggedInAs(String username, String withRoleId, Object payload) {
+//		return new HttpEntity(payload, forUser(username, withRoleId));
+//	}
 
 
 	/**
@@ -60,10 +61,10 @@ public class JwtRequestHelper {
 	 * @param withRoleId
 	 * @return
 	 */
-	@SuppressWarnings({ "unchecked", "rawtypes" })
-	public static HttpEntity loggedInAs(String username, String withRoleId) {
-		return new HttpEntity(forUser(username, withRoleId));
-	}
+//	@SuppressWarnings({ "unchecked", "rawtypes" })
+//	public static HttpEntity loggedInAs(String username, String withRoleId) {
+//		return new HttpEntity(forUser(username, withRoleId));
+//	}
 
 	/**
 	 * Generate the appropriate headers for JWT Authentication.
@@ -72,17 +73,41 @@ public class JwtRequestHelper {
 	 * @param withRoleId role identifier
 	 * @return Http Headers for Content-Type and Authorization
 	 */
-	private static HttpHeaders forUser(String username, String withRoleId) {
+//	private static HttpHeaders forUser(String username, String withRoleId) {
+//
+//		HttpHeaders headers = new HttpHeaders();
+//
+//		Role r = new Role();
+//		r.setRoleName(withRoleId);
+//
+//		String token = jwtProvider.createToken(username, Arrays.asList(r));
+//		headers.setContentType(APPLICATION_JSON);
+//		headers.add("Authoriation", "Bearer " + token);
+//
+//		return headers;
+//	}
+
+
+	
+	/**
+	 * Generate the appropriate headers for JWT Authentication.
+	 *
+	 * @param username username
+	 * @param withRoleId role identifier
+	 * @return Http Headers for Content-Type and Authorization
+	 */
+	public HttpHeaders withRole(String roleName) {
 
 		HttpHeaders headers = new HttpHeaders();
 
 		Role r = new Role();
-		r.setRoleName(withRoleId);
+		r.setRoleName(roleName);
 
-		String token = jwtProvider.createToken(username, Arrays.asList(r));
+		String token = jwtProvider.createToken("anonymous", Arrays.asList(r));
 		headers.setContentType(APPLICATION_JSON);
 		headers.add("Authoriation", "Bearer " + token);
 
 		return headers;
 	}
+
 }
