@@ -187,17 +187,7 @@ public class TourRatingService {
 			}
 		});
 	}
-	/**
-	 * @param tourId
-	 * @param customerId
-	 * @return
-	 */
-	public TourRating verifyTourRating(int tourId, Integer customerId) throws NoSuchElementException {
 
-		return tourRatingRepository.findByTourIdAndCustomerId(tourId, customerId)
-				.orElseThrow(() -> new NoSuchElementException(
-						"Tour-Rating pair for request(" + tourId + "for customer " + customerId));
-	}
 
 	/**
 	 * Verify and return the Tour given a tourId.
@@ -212,4 +202,15 @@ public class TourRatingService {
 				.orElseThrow(() -> new NoSuchElementException("Tour does not exist " + tourId));
 	}
 
+	/**
+	 * @param tourId
+	 * @param customerId
+	 * @return
+	 */
+	public TourRating verifyTourRating(int tourId, Integer customerId) throws NoSuchElementException {
+
+		return tourRatingRepository.findByTourIdAndCustomerId(tourId, customerId)
+				.orElseThrow(() -> new NoSuchElementException(
+						"Tour-Rating pair for request(" + tourId + "for customer " + customerId));
+	}
 }

@@ -68,6 +68,7 @@ public class ExplorePlacesUserDetailsService implements UserDetailsService {
 					.accountExpired(false)
 					.accountLocked(false)
 					.credentialsExpired(false)
+					.disabled(false)
 					.build());
 		}
 		

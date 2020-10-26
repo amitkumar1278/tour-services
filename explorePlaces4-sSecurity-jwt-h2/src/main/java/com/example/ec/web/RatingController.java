@@ -73,7 +73,7 @@ public class RatingController {
      */
 	@ResponseStatus(HttpStatus.NOT_FOUND)
 	@ExceptionHandler(NoSuchElementException.class)
-	public String return404(NoSuchElementException ex) {
+	public String return400(NoSuchElementException ex) {
 		
 		LOGGER.error("Unable to complete transaction", ex);
 		return ex.getMessage();
