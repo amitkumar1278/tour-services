@@ -19,6 +19,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.core.ParameterizedTypeReference;
+import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.junit4.SpringRunner;
@@ -26,8 +27,6 @@ import org.springframework.test.context.junit4.SpringRunner;
 import com.example.ec.domain.Role;
 import com.example.ec.domain.User;
 import com.example.ec.service.UserService;
-
-import static com.example.ec.web.JwtRequestHelper.loggedInAs;
 
 /**
  * @author amit
@@ -46,6 +45,9 @@ public class UserControllerTest {
 	@Autowired
 	private TestRestTemplate restTemplate;
 
+	@Autowired
+	private JwtRequestHelper jwtRequestHelper;
+	
 	@MockBean
 	private UserService service;
 
@@ -56,29 +58,34 @@ public class UserControllerTest {
 	}
 
 
+	@SuppressWarnings("rawtypes")
 	@Test
 	public void signup() {
 
 		when(service.signup(signupDto.getUsername(), signupDto.getPassword(), signupDto.getFirstName(), signupDto.getLastName()))
 		.thenReturn(Optional.of(user));
 
+		@SuppressWarnings("unchecked")
 		ResponseEntity<User> response = restTemplate.exchange("/users/signup", 
 				HttpMethod.POST, 
-				loggedInAs("admin", "ROLA_ADMIN", signupDto),
+				new HttpEntity(signupDto, jwtRequestHelper.withRole("ROLE_ADMIN")),
 				User.class);
 
 		assertThat(response.getStatusCode().value(), is(201));
-		assertThat(response.getBody(), is(user));
-
+		assertThat(response.getBody().getUsername(), is(user.getUsername()));
+		assertThat(response.getBody().getFirstName(), is(user.getFirstName()));
+		assertThat(response.getBody().getLastName(), is(user.getLastName()));
+		assertThat(response.getBody().getRoles().size(), is(user.getRoles().size()));
 	}
 
 
 	@Test
 	public void signupUnauthoried() {
 
+		@SuppressWarnings({ "unchecked", "rawtypes" })
 		ResponseEntity<User> response = restTemplate.exchange("/users/signup", 
 				HttpMethod.POST,
-				loggedInAs("csr_jane", "ROLE_CSR", signupDto),
+				new HttpEntity(signupDto, jwtRequestHelper.withRole("ROLE_CSR")),
 				User.class);
 
 		assertThat(response.getStatusCode().value(), is(403));
@@ -89,9 +96,10 @@ public class UserControllerTest {
 	public void getAllUsers() {
 		when(service.getAll()).thenReturn(Arrays.asList(user));
 
+		@SuppressWarnings({ "unchecked", "rawtypes" })
 		ResponseEntity<List<User>> response = restTemplate.exchange("/users", 
 				HttpMethod.GET,
-				loggedInAs("admin", "ROLA_ADMIN"),
+				new HttpEntity(jwtRequestHelper.withRole("ROLE_ADMIN")),
 				new ParameterizedTypeReference<List<User>>() {	});
 
 		assertThat(response.getStatusCode().value(), is(200));
