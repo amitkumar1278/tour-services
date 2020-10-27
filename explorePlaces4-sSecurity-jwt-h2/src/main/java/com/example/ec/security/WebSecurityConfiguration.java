@@ -1,6 +1,3 @@
-/**
- * 
- */
 package com.example.ec.security;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,63 +20,52 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 
 @Configuration
 @EnableGlobalMethodSecurity(prePostEnabled = true)
-public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter{
+public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 
-	@Autowired
-	private ExplorePlacesUserDetailsService userDetailsDervice;
+    @Autowired
+    private ExplorePlacesUserDetailsService userDetailsService;
 
-	@Override
-	protected void configure(HttpSecurity http) throws Exception {
+    @Override
+    protected void configure(HttpSecurity http) throws Exception {
 
-		/**
-		 * Entry points
-		 */
-		http.authorizeRequests()
-		.antMatchers("/packages/**").permitAll()
-		.antMatchers("/tours/**").permitAll()
-		.antMatchers("/ratings/**").permitAll()
-		.antMatchers("/users/signin").permitAll()
-		//		.antMatchers("/v3/api-docs/**", "/swagger-ui/**", "/swagger-ui.html").permitAll()
-		// Disallow everything else..
-		.anyRequest().authenticated();
+        // Entry points
+        http.authorizeRequests()
+                .antMatchers("/packages/**").permitAll()
+                .antMatchers("/tours/**").permitAll()
+                .antMatchers("/ratings/**").permitAll()
+                .antMatchers("/users/signin").permitAll()
+                // Disallow everything else..
+                .anyRequest().authenticated();
 
-		/**
-		 * Disable CSRF (cross site request forgery) 
-		 */
-		http.csrf().disable();
+        // Disable CSRF (cross site request forgery)
+        http.csrf().disable();
 
-		/**
-		 * No session will be created or used by spring security 
-		 */
-		http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
+        // No session will be created or used by spring security
+        http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
 
-		http.addFilterBefore(new JwtTokenFilter(userDetailsDervice), UsernamePasswordAuthenticationFilter.class);
+        http.addFilterBefore(new JwtTokenFilter(userDetailsService), UsernamePasswordAuthenticationFilter.class);
+    }
 
-	}
+    @Override
+    public void configure(WebSecurity web) throws Exception {
+        // Allow swagger to be accessed without authentication
+        web.ignoring().antMatchers("/v2/api-docs")//
+                .antMatchers("/swagger-resources/**")//
+                .antMatchers("/swagger-ui.html")//
+                .antMatchers("/configuration/**")//
+                .antMatchers("/webjars/**")//
+                .antMatchers("/public");
+    }
 
+    @Bean
+    @Override
+    public AuthenticationManager authenticationManagerBean() throws Exception {
+        return super.authenticationManagerBean();
+    }
 
-	@Override
-	public void configure(WebSecurity web) throws Exception{
-
-		// Allow swagger to be accessed without authentication
-		web.ignoring().antMatchers("/v2/api-docs")
-		.antMatchers("/swagger-resources/**")
-		.antMatchers("/swagger-ui.html")
-		.antMatchers("/configuration/**")
-		.antMatchers("/webjars/**")
-		.antMatchers("/public");
-	}
-
-	@Bean
-	@Override
-	public AuthenticationManager authenticationManagerBean() throws Exception {
-		return super.authenticationManagerBean();
-	}
-
-
-	@Bean
-	public PasswordEncoder passwordEncoder() {
-		return new  BCryptPasswordEncoder(12);
-	}
+    @Bean
+    public PasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder(12);
+    }
 
 }
