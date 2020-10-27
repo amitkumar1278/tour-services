@@ -1,6 +1,3 @@
-/**
- * 
- */
 package com.example.ec.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;

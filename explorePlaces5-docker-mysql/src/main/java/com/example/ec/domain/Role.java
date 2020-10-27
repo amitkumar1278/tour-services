@@ -24,6 +24,10 @@ public class Role  implements GrantedAuthority {
     @Column(name="description")
     private String description;
 
+    @Override
+    public String getAuthority() {
+        return roleName;
+    }
     public Long getId() {
         return id;
     }
@@ -46,11 +50,5 @@ public class Role  implements GrantedAuthority {
 
     public void setDescription(String description) {
         this.description = description;
-    }
-    
-
-    @Override
-    public String getAuthority() {
-        return roleName;
     }
 }
