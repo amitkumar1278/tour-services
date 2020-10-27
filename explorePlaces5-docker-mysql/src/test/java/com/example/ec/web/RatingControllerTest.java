@@ -1,14 +1,9 @@
 package com.example.ec.web;
 
-import static org.hamcrest.CoreMatchers.is;
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.mockito.Mockito.when;
-import static org.springframework.boot.test.context.SpringBootTest.WebEnvironment.RANDOM_PORT;
-
-import java.util.Arrays;
-import java.util.List;
-import java.util.Optional;
-
+import com.example.ec.domain.Tour;
+import com.example.ec.domain.TourRating;
+import com.example.ec.dto.RatingDto;
+import com.example.ec.service.TourRatingService;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -23,19 +18,23 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import com.example.ec.domain.Tour;
-import com.example.ec.domain.TourRating;
-import com.example.ec.dto.RatingDto;
-import com.example.ec.service.TourRatingService;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Optional;
+
+import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.core.StringContains.containsString;
+import static org.mockito.Mockito.when;
+import static org.springframework.boot.test.context.SpringBootTest.WebEnvironment.RANDOM_PORT;
 
 /**
  * @author amit
  * 
- *         Invoke the Controller methods via HTTP. Do not invoke the
- *         tourRatingService methods, use Mock instead
+ * Invoke the Controller methods via HTTP. Do not invoke the
+ * tourRatingService methods, use Mock instead
  *
  */
-
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = RANDOM_PORT)
 public class RatingControllerTest {
@@ -100,5 +99,16 @@ public class RatingControllerTest {
         assertThat(response.getBody().getCustomerId(), is(CUSTOMER_ID));
         assertThat(response.getBody().getComment(), is(COMMENT));
         assertThat(response.getBody().getScore(), is(SCORE));
+    }
+    @Test
+    public void getOne_notFound() {
+        when(tourRatingServiceMock.lookupRatingById(RATING_ID))
+                .thenReturn(Optional.empty());
+
+        ResponseEntity<String> response =
+                restTemplate.getForEntity(RATINGS_URL + "/" + RATING_ID, String.class);
+        assertThat(response.getStatusCode(), is(HttpStatus.NOT_FOUND));
+        assertThat(response.getBody(),
+                containsString("Rating " + RATING_ID + " not found"));
     }
 }

@@ -1,19 +1,19 @@
 package com.example.ec.web;
 
-import static org.hamcrest.CoreMatchers.is;
-import static org.hamcrest.MatcherAssert.assertThat;
-
 import org.junit.Test;
 
 import com.example.ec.dto.LoginDto;
+
+import static org.hamcrest.Matchers.is;
+import static org.junit.Assert.*;
+
 /**
  * @author amit
  *
  */
 public class LoginDtoTest {
 
-    @SuppressWarnings("deprecation")
-	@Test
+    @Test
     public void testAll() {
         LoginDto dto = new LoginDto("user","pwd");
         assertThat(dto.getUsername(), is("user"));
