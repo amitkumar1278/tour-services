@@ -36,7 +36,7 @@ public class RatingDto  {
         this.customerId = customerId;
     }
 
-    public RatingDto() {}
+    protected RatingDto() {}
 
     public Integer getScore() {
         return score;
