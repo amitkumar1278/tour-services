@@ -12,8 +12,7 @@ import java.util.Objects;
  *
  * @author amit
  */
-
-@Table(name = "tour_package")
+@Table(name="tour_package")
 @Entity
 public class TourPackage implements Serializable {
     /**

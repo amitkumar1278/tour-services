@@ -1,13 +1,7 @@
 package com.example.ec.domain;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.Objects;
 
 /**
  * Rating of a Tour by a Customer
@@ -15,9 +9,8 @@ import javax.persistence.Table;
  * @author amit
  */
 @Entity
-@Table(name = "tour_rating")
+@Table(name="tour_rating")
 public class TourRating {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
@@ -25,11 +18,11 @@ public class TourRating {
     @ManyToOne
     @JoinColumn(name = "tour_id")
     private Tour tour;
-    
-    @Column(name = "customer_id")
+
+    @Column(name="customer_id")
     private Integer customerId;
-    
-	@Column(nullable = false)
+
+    @Column(nullable = false)
     private Integer score;
 
     @Column
@@ -66,8 +59,7 @@ public class TourRating {
         this.score = score;
         this.comment = toComment(score);
     }
-    
-    
+
     /**
      * Auto Generate a message for a score.
      *
@@ -85,120 +77,56 @@ public class TourRating {
         }
     }
 
-    
-    /**
-	 * @return the id
-	 */
-	public Integer getId() {
-		return id;
-	}
-	
-	
-	/**
-	 * @return the tour
-	 */
-	public Tour getTour() {
-		return tour;
-	}
+    public Integer getId() {
+        return id;
+    }
 
-	/**
-	 * @param tour the tour to set
-	 */
-	public void setTour(Tour tour) {
-		this.tour = tour;
-	}
+    public Integer getScore() {
+        return score;
+    }
 
-	/**
-	 * @return the customerId
-	 */
-	public Integer getCustomerId() {
-		return customerId;
-	}
+    public String getComment() {
+        return comment;
+    }
 
-	/**
-	 * @param customerId the customerId to set
-	 */
-	public void setCustomerId(Integer customerId) {
-		this.customerId = customerId;
-	}
+    public Tour getTour() {
+        return tour;
+    }
 
-	/**
-	 * @return the score
-	 */
-	public Integer getScore() {
-		return score;
-	}
+    public void setTour(Tour tour) {
+        this.tour = tour;
+    }
 
-	/**
-	 * @param score the score to set
-	 */
-	public void setScore(Integer score) {
-		this.score = score;
-	}
+    public Integer getCustomerId() {
+        return customerId;
+    }
 
-	/**
-	 * @return the comment
-	 */
-	public String getComment() {
-		return comment;
-	}
+    public void setCustomerId(Integer customerId) {
+        this.customerId = customerId;
+    }
 
-	/**
-	 * @param comment the comment to set
-	 */
-	public void setComment(String comment) {
-		this.comment = comment;
-	}
+    public void setScore(Integer score) {
+        this.score = score;
+    }
 
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((comment == null) ? 0 : comment.hashCode());
-		result = prime * result + ((customerId == null) ? 0 : customerId.hashCode());
-		result = prime * result + ((id == null) ? 0 : id.hashCode());
-		result = prime * result + ((score == null) ? 0 : score.hashCode());
-		result = prime * result + ((tour == null) ? 0 : tour.hashCode());
-		return result;
-	}
+    public void setComment(String comment) {
+        this.comment = comment;
+    }
 
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		TourRating other = (TourRating) obj;
-		if (comment == null) {
-			if (other.comment != null)
-				return false;
-		} else if (!comment.equals(other.comment))
-			return false;
-		if (customerId == null) {
-			if (other.customerId != null)
-				return false;
-		} else if (!customerId.equals(other.customerId))
-			return false;
-		if (id == null) {
-			if (other.id != null)
-				return false;
-		} else if (!id.equals(other.id))
-			return false;
-		if (score == null) {
-			if (other.score != null)
-				return false;
-		} else if (!score.equals(other.score))
-			return false;
-		if (tour == null) {
-			if (other.tour != null)
-				return false;
-		} else if (!tour.equals(other.tour))
-			return false;
-		return true;
-	}
- 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        TourRating that = (TourRating) o;
+        return Objects.equals(id, that.id) &&
+                Objects.equals(tour, that.tour) &&
+                Objects.equals(customerId, that.customerId) &&
+                Objects.equals(score, that.score) &&
+                Objects.equals(comment, that.comment);
+    }
 
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, tour, customerId, score, comment);
+    }
 }
-
