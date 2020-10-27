@@ -1,4 +1,4 @@
-package com.example.ec.web;
+package com.example.ec.dto;
 
 import javax.validation.constraints.NotNull;
 

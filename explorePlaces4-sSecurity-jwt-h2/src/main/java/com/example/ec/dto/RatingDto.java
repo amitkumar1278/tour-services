@@ -1,4 +1,4 @@
-package com.example.ec.web;
+package com.example.ec.dto;
 
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
@@ -36,7 +36,7 @@ public class RatingDto  {
         this.customerId = customerId;
     }
 
-    protected RatingDto() {}
+    public RatingDto() {}
 
     public Integer getScore() {
         return score;

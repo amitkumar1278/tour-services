@@ -3,10 +3,12 @@
  */
 package com.example.ec.web;
 
-import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.MatcherAssert.assertThat;
 
 import org.junit.Test;
+
+import com.example.ec.dto.RatingDto;
 
 /**
  * @author amit

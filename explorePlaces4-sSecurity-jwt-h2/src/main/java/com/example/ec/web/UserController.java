@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.HttpServerErrorException;
 
 import com.example.ec.domain.User;
+import com.example.ec.dto.LoginDto;
 import com.example.ec.service.UserService;
 
 /**
@@ -32,6 +33,7 @@ import com.example.ec.service.UserService;
 @RequestMapping("/users")
 public class UserController {
 
+	@SuppressWarnings("unused")
 	private static final Logger LOGGER = LoggerFactory.getLogger(UserController.class);
 
 	@Autowired

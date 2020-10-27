@@ -35,7 +35,8 @@ public class ExceptionHandlerController {
 
             @Override
             public Map<String, Object> getErrorAttributes(WebRequest requestAttributes, boolean includeStackTrace) {
-                Map<String, Object> errorAttributes = super.getErrorAttributes(requestAttributes, includeStackTrace);
+                @SuppressWarnings("deprecation")
+				Map<String, Object> errorAttributes = super.getErrorAttributes(requestAttributes, includeStackTrace);
                 errorAttributes.remove("exception");
                 return errorAttributes;
             }

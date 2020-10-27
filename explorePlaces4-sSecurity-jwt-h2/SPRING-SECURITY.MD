@@ -1,7 +1,7 @@
 
 
 # IMPORTANT URL
-
+without Spring secutiry we can see
 http://localhost:8080/users
 Response Data:
 

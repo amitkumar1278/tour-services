@@ -26,6 +26,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import com.example.ec.domain.Role;
 import com.example.ec.domain.User;
+import com.example.ec.dto.LoginDto;
 import com.example.ec.service.UserService;
 
 /**

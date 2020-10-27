@@ -1,9 +1,11 @@
 package com.example.ec.web;
 
-import org.junit.Test;
-
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
+
+import org.junit.Test;
+
+import com.example.ec.dto.LoginDto;
 /**
  * @author amit
  *
