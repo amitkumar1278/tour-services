@@ -1,14 +1,13 @@
 package com.example.ec.repo;
 
-import java.util.List;
-import java.util.Optional;
-
+import com.example.ec.domain.TourRating;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 
-import com.example.ec.domain.TourRating;
+import java.util.List;
+import java.util.Optional;
 
 /**
  * Tour Rating Repository Interface
@@ -42,6 +41,4 @@ public interface TourRatingRepository extends JpaRepository<TourRating, Integer>
      * @return TourRating if found, null otherwise.
      */
     Optional<TourRating> findByTourIdAndCustomerId(Integer tourId, Integer customerId);
-
-	
 }

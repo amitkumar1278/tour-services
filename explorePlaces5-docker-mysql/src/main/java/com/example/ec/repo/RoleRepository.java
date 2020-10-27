@@ -1,20 +1,14 @@
-/**
- * 
- */
 package com.example.ec.repo;
 
-import java.util.Optional;
-
+import com.example.ec.domain.Role;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.example.ec.domain.Role;
+import java.util.Optional;
 
 /**
  * @author amit
  *
  */
 public interface RoleRepository extends JpaRepository<Role, Long> {
-
 	Optional<Role> findByRoleName(String name);
-	
 }
