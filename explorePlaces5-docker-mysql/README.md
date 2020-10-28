@@ -32,7 +32,7 @@ for details follow below URL:
 
 
 
-##3. Docker Commands
+##3. Docker Commands for MySQL
 ##### Start MySql Container (downloads image if not found)
 ``
 docker run  --detach   --name ec-mysql -p 6604:3306 -e MYSQL_ROOT_PASSWORD=password -e MYSQL_DATABASE=explorecali -e MYSQL_USER=cali_user -e MYSQL_PASSWORD=cali_pass -d mysql
@@ -51,6 +51,9 @@ docker ps -a
 ``
 docker run -it --link ec-mysql:mysql --rm mysql sh -c 'exec mysql -h"$MYSQL_PORT_3306_TCP_ADDR" -P"$MYSQL_PORT_3306_TCP_PORT" -uroot -p"$MYSQL_ENV_MYSQL_ROOT_PASSWORD"'
 ``
+
+use sudo if you are getting connection error.
+
 ##### Stop ec-mysql container
 ``
 docker stop ec-mysql
@@ -66,4 +69,31 @@ docker rm ec-mysql
 ##### Remove image (must stop and remove container first)
 ``
 docker rmi mysql:latest
+
+
+##4. MySQL commands once connection is established.
+
+		mysql> show databases;
+		mysql> use explorecali;
+		mysql> show tables;
+		mysql> select * from tour;
+		mysql> quit
+
+
+
+# Steps to run Application		
+1. Installed and configure Docker by following step 1 & 2
+2. Once Docker installation is done follow Step 3 and install mysql and create database with credentials.
+3. once MySQL is ready, connect using command mention in step 3, if you are getting access related issue add sudo.
+4. follow step 4 to verify db and tables.
+5. Data will persist even application is stopped. 
+6. In current implementation of application, if we start application for 2nd time duplicate record will inserted with different id. 
+	"schema.sql" and "data.sql" are good for initialization but not migration.
+7. to remove docker container follow command mentioned in step 3:
+	
+
+
+
+
+
 ``
