@@ -55,6 +55,63 @@ or
 	``
 	
 
+#### Dockerize Explore California
+
+##### Build jar
+``
+mvn package -DskipTests
+or
+mvn package -DskipTests=true
+
+
+``
+# check if jar file is build or not
+ls tafrget/  
+
+# chceck for Dockerfile
+ls
+cat Dockerfile
+
+##### Build Docker image
+``
+docker build -t explorecali .
+
+# check all images
+docker images
+``
+##### Run Docker container
+``
+docker run    --name ec-app -p8080:8080 -d explorecali
+
+docker ps -a
+
+docker logs ec-app
+
+docker inspect ex-app
+ 
+``
+##### enter Docker container
+``
+docker exec -t -i ec-app /bin/bash
+``
+
+
+# Link the Java application and database Docker containers
+
+docker ps -a
+docker images
+docker rmi explorecali
+docker images
+# docker file updated; change the profile setting
+
+
+
+
+
+
+
+
+
 
 
 
