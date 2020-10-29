@@ -1,12 +1,12 @@
-# MySQl & Docker integration in Spring Boot Microservices
+# MySQL & Docker integration in Spring Boot Microservices
 
 
-## For MySQl integration we have two option:
+## For MySQL integration we have two option:
 	1. We can install MySQl externally and connect it with connection string.
 	2. We can install MySQL on docker and connect to the application. 
 
 
-# Advice for running Application with MySQL	
+## Advice for running Application with MySQL	
 	
 - Installed and configure Docker by following **Step 1 & 2**
 - Once Docker installation is done follow **Step 3** and install mysql and create database with credentials.
