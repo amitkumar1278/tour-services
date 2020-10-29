@@ -4,7 +4,7 @@ We are working on this application to make it production ready, In order to do t
 
 For this we can install MySQl externally and connect it with connection string but here we will try to install MySQL on docker and connect to the application. 
 
-##1. Install Docker For Mac/Windows/Linux
+## 1. Install Docker For Mac/Windows/Linux
 install docker in your local system or server for that follow below steps.
 
 For Ubuntu follow steps mention in link: 
@@ -16,7 +16,7 @@ For more examples and ideas, visit:
 	https://docs.docker.com/get-started/
 
 
-##2. Docker post-installation steps for Linux
+## 2. Docker post-installation steps for Linux
 
 This section contains optional procedures for configuring Linux hosts to work better with Docker.
 
@@ -32,7 +32,7 @@ for details follow below URL:
 
 
 
-##3. Docker Commands for MySQL
+## 3. Docker Commands for MySQL
 ##### Start MySql Container (downloads image if not found)
 ``
 docker run  --detach   --name ec-mysql -p 6604:3306 -e MYSQL_ROOT_PASSWORD=password -e MYSQL_DATABASE=explorecali -e MYSQL_USER=cali_user -e MYSQL_PASSWORD=cali_pass -d mysql
@@ -71,7 +71,7 @@ docker rm ec-mysql
 docker rmi mysql:latest
 
 
-##4. MySQL commands once connection is established.
+## 4. MySQL commands once connection is established.
 
 		mysql> show databases;
 		mysql> use explorecali;
