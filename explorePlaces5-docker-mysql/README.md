@@ -4,7 +4,20 @@ We are working on this application to make it production ready, In order to do t
 
 For this we can install MySQl externally and connect it with connection string but here we will try to install MySQL on docker and connect to the application. 
 
-## 1. Install Docker For Mac/Windows/Linux
+
+# Advice for running Application with MySQL	
+	
+- Installed and configure Docker by following **step 1 & 2**
+- Once Docker installation is done follow **Step 3** and install mysql and create database with credentials.
+- once MySQL is ready, connect using command mention in **step 3**, if you are getting access related issue add sudo.
+- follow **step 4** to verify db and tables.
+- Data will persist even application is stopped. 
+- In current implementation of application, if we start application for 2nd time duplicate record will inserted with different id. 
+	"schema.sql" and "data.sql" are good for initialization but not migration.
+- to remove docker container follow command mentioned in **step 3**.
+
+
+## Step 1. Install Docker For Mac/Windows/Linux
 install docker in your local system or server for that follow below steps.
 
 For Ubuntu follow steps mention in link: 
@@ -16,7 +29,7 @@ For more examples and ideas, visit:
 	https://docs.docker.com/get-started/
 
 
-## 2. Docker post-installation steps for Linux
+## Step 2. Docker post-installation steps for Linux
 
 This section contains optional procedures for configuring Linux hosts to work better with Docker.
 
@@ -32,7 +45,7 @@ for details follow below URL:
 
 
 
-## 3. Docker Commands for MySQL
+## Step 3. Docker Commands for MySQL
 ##### Start MySql Container (downloads image if not found)
 ``
 docker run  --detach   --name ec-mysql -p 6604:3306 -e MYSQL_ROOT_PASSWORD=password -e MYSQL_DATABASE=explorecali -e MYSQL_USER=cali_user -e MYSQL_PASSWORD=cali_pass -d mysql
@@ -71,7 +84,7 @@ docker rm ec-mysql
 docker rmi mysql:latest
 
 
-## 4. MySQL commands once connection is established.
+## Step 4. MySQL commands once connection is established.
 
 		mysql> show databases;
 		mysql> use explorecali;
@@ -81,15 +94,6 @@ docker rmi mysql:latest
 
 
 
-# Steps to run Application		
-1. Installed and configure Docker by following step 1 & 2
-2. Once Docker installation is done follow Step 3 and install mysql and create database with credentials.
-3. once MySQL is ready, connect using command mention in step 3, if you are getting access related issue add sudo.
-4. follow step 4 to verify db and tables.
-5. Data will persist even application is stopped. 
-6. In current implementation of application, if we start application for 2nd time duplicate record will inserted with different id. 
-	"schema.sql" and "data.sql" are good for initialization but not migration.
-7. to remove docker container follow command mentioned in step 3:
 	
 
 
