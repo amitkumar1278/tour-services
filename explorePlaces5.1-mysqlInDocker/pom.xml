@@ -5,11 +5,11 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.example.ec</groupId>
-	<artifactId>explorePlaces5-mysqlInDocker</artifactId>
+	<artifactId>explorePlaces5.1-mysqlInDocker</artifactId>
 	<version>3.0.0-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
-	<name>explorePlaces5-mysqlInDocker</name>
+	<name>explorePlaces5.1-mysqlInDocker</name>
 	<description>Explore Places Microservice</description>
 
 	<parent>

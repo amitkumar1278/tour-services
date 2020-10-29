@@ -5,11 +5,11 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.example.ec</groupId>
-	<artifactId>explorePlaces6-dockerization</artifactId>
+	<artifactId>explorePlaces5.2-dockerization</artifactId>
 	<version>3.0.0-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
-	<name>explorePlaces6-dockerization</name>
+	<name>explorePlaces5.2-dockerization</name>
 	<description>Explore Places Microservice</description>
 
 	<parent>
