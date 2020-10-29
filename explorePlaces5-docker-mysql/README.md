@@ -7,14 +7,14 @@ For this we can install MySQl externally and connect it with connection string b
 
 # Advice for running Application with MySQL	
 	
-- Installed and configure Docker by following **step 1 & 2**
+- Installed and configure Docker by following **Step 1 & 2**
 - Once Docker installation is done follow **Step 3** and install mysql and create database with credentials.
-- once MySQL is ready, connect using command mention in **step 3**, if you are getting access related issue add sudo.
-- follow **step 4** to verify db and tables.
+- once MySQL is ready, connect using command mention in **Step 3**, if you are getting access related issue add sudo.
+- follow **Step 4** to verify db and tables.
 - Data will persist even application is stopped. 
 - In current implementation of application, if we start application for 2nd time duplicate record will inserted with different id. 
 	"schema.sql" and "data.sql" are good for initialization but not migration.
-- to remove docker container follow command mentioned in **step 3**.
+- to remove docker container follow command mentioned in **Step 3**.
 
 
 ## Step 1. Install Docker For Mac/Windows/Linux
