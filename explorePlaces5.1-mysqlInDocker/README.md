@@ -1,6 +1,8 @@
 # Extending, Securing and Dockerizing Spring Boot Microservices
 
-We are working on this application to make it production ready, In order to do that following technology we are planning integrat:
+# First step towards dockerization
+
+We are working on this application to make it production ready, In order to do that following technology we are planning integrate:
 
 -	Final version of Product integrated with External MySql Database along with Docker.
 -	Install Docker For Mac/Windows/Linux
