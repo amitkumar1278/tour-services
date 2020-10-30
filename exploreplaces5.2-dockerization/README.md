@@ -9,7 +9,7 @@ Below things were implemented in first version of dockerization **exploreplaces*
 -	Install Docker For Mac/Windows/Linux
 - 	Integrated with flywaydb to manage duplication of initialiation Schema and data.
 -	DB profile to use H2 and MySQL database
-
+-----------------------------------
 
 # Second step towards dockeriazation:
 
@@ -28,6 +28,9 @@ following steps need to perform for dockerization of standalone application.
 - Now we need to invoke another docker command to create the image. which will download java images, if not available in local.
 - Run the Docker container using docker command. if the status is "exited" then there is some issue in running the image. to get details of the image we can inspect as well.
 - invoke API from postman to check if container is working fine or not.
+-----------------------------------
+
+# Third step towards dockeriazation:
 
 if we want to run the same application with MySQL we need to do few changes in above explained standalone application steps:
 - need to define active profile in Dockerfile configuration as below:
@@ -36,6 +39,10 @@ if we want to run the same application with MySQL we need to do few changes in a
 	*spring.datasource.url=jdbc:mysql://ec-mysql:3306/exploreplaces*
 - we need to link DB container to MY sql like belows:
 	*docker run --name ec-app -p 8080:8080 --link ec-mysql:mysql -d explorecali*
+
+-----------------------------------
+
+# Fourth step towards dockeriazation:
 
 
 
@@ -112,14 +119,22 @@ or
 
 **Build Docker image**	``docker build -t exploreplaces . ``
 
-##### Run Docker container
-----------------------------------	
-**for h2 or standalone db:** ``docker run    --name ec-app -p8080:8080 -d exploreplaces``
+------------------------------------
+**Run Docker container with default property set in Dockerfile :** 
+`` docker run --name ec-app -d explorecali ``
 
-**to integrate with MySQL running on another docker:** `` docker run --name ec-app -p 8080:8080 --link ec-mysql:mysql -d exploreplaces ``
+**Run Docker container with h2 or default db profile :** 
+``docker run --name ec-app -p8080:8080 -d exploreplaces``
+
+**Run Docker container with mysql profile set in Dockerfile :** 
+`` docker run --name ec-app -p 8080:8080 --link ec-mysql:mysql -d exploreplaces ``
 
 
-	
+**Run Docker container with docker profile set in Dockerfile and migration scripts on host :** 
+`` docker run --name ec-app -p 8080:8080 -v ~/db/migration:/var/migration -e server=ec-mysql -e port=3306 -e dbuser=cali_user -e dbpassword=cali_pass --link ec-mysql:mysql -d explorecali ``
+
+---------------------------------------------	
+
 **enter Docker container**	``docker exec -t -i ec-app /bin/bash``
 	
 

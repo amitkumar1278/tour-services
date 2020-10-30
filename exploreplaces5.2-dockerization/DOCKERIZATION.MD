@@ -5,7 +5,7 @@ In order to improve dockeriazation, We are going to Dockerize "exploreplaces" ap
 
 
 
-
+-----------------------------------
 # Docker Flow
 
 Once docker is running next step can be stop and commit.
@@ -53,7 +53,7 @@ tag image with a name:
 
 tag image while commiting
 	docker commit current_image my-image-2
-
+-----------------------------------
 
 # Dockeriation of Application
 
@@ -71,7 +71,7 @@ in case of **MySQL DB profile**, we did little changes in *Dockerfile* and *appl
 
 As part of this we will create a docker image which include linux operating system, Java JDK 8 version 8 and the **explorePlace5.2** application jar, which include execution of below steps:
 
-
+-----------------------------------
 ##### Step 1: first make sure that our jar of application explorePlace has been built. use below command to build.
 
 		mvn package -DskipTests
@@ -82,6 +82,7 @@ check if jar file is created or not in target dir:
 		
 		ls target/ 
 
+-----------------------------------
 ##### Step 2: we have created "Dockerfile" on root path of application, so this is sort of configuration of setting docker image.
 
 ##### check for Dockerfile
@@ -103,6 +104,8 @@ then "WORKDIR" then we are going to add jar to the image.
 we are going to expose at port 8080.
 Entrypoint is sort of equivalent to command line where we need to run mentioned command with actual jar file name which is within the image.
 
+
+-----------------------------------
 ##### Step 3: Now we are going to invoke another docker command to create the image.
 
 	docker build -t exploreplaces .
@@ -114,14 +117,22 @@ it will download java images, which we can check by:
 We can see here "exploreplaces" image with "latest" tag.
  
 
+-----------------------------------
 ##### Step 4: Run the Docker container.
 
 
-for h2 or standalone db: 
-	docker run --name ec-app -p8080:8080 -d exploreplaces
+**Run Docker container with default property set in Dockerfile :** 
+`` docker run --name ec-app -d explorecali ``
 
-to integrate with MySQL running on another docker: 
-	docker run --name ec-app -p 8080:8080 --link ec-mysql:mysql -d exploreplaces
+**Run Docker container with h2 or default db profile :** 
+``docker run --name ec-app -p8080:8080 -d exploreplaces``
+
+**Run Docker container with mysql profile set in Dockerfile :** 
+`` docker run --name ec-app -p 8080:8080 --link ec-mysql:mysql -d exploreplaces ``
+
+
+**Run Docker container with docker profile set in Dockerfile and migration scripts on host :** 
+`` docker run --name ec-app -p 8080:8080 -v ~/db/migration:/var/migration -e server=ec-mysql -e port=3306 -e dbuser=cali_user -e dbpassword=cali_pass --link ec-mysql:mysql -d explorecali ``
 
 
 in this command:
@@ -142,11 +153,15 @@ to see last container
 to get details of the image, inspect it using:	
 	docker inspect ex-app
 
+
+-----------------------------------
 ##### Step 5: enter Docker container
 	
 	``
 	docker exec -t -i ec-app /bin/bash
 	``
+	
+-----------------------------------	
 ##### Step 6: invoke API from postman to check if container is working fine or not.
 
 
