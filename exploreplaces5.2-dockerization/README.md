@@ -4,7 +4,7 @@ We are working on this application to make it production ready, In order to do t
 
 # First step towards dockerization
 
-Below things were implemented in first version of dockerization **explorePlaces** service:
+Below things were implemented in first version of dockerization **exploreplaces** service:
 -	Final version of Product integrated with External MySql Database along with Docker.
 -	Install Docker For Mac/Windows/Linux
 - 	Integrated with flywaydb to manage duplication of initialiation Schema and data.
@@ -13,7 +13,7 @@ Below things were implemented in first version of dockerization **explorePlaces*
 
 # Second step towards dockeriazation:
 
-In order to improve dockeriazation, We are going to Dockerize "explorePlaces" application itself.
+In order to improve dockeriazation, We are going to Dockerize "exploreplaces" application itself.
 
 in this process we will run default profile which will interact with H2 database so container of this image can run completely standalone.
 
@@ -42,7 +42,7 @@ following steps need to perform for dockerization of application only.
 ### Docker Commands
 ##### Start MySql Container (downloads image if not found)
 	``
-	docker run  --detach   --name ec-mysql -p 6604:3306 -e MYSQL_ROOT_PASSWORD=password -e MYSQL_DATABASE=explorePlaces -e MYSQL_USER=admin -e MYSQL_PASSWORD=password123 -d mysql
+	docker run  --detach   --name ec-mysql -p 6604:3306 -e MYSQL_ROOT_PASSWORD=password -e MYSQL_DATABASE=exploreplaces -e MYSQL_USER=admin -e MYSQL_PASSWORD=password123 -d mysql
 	``
 
 ##### view all images
@@ -94,7 +94,7 @@ we can change spring profile simply by chnaging below value in application.prope
 or
 
 	``
-	java  -jar target/explorePlaces5.2-dockerization-3.0.0-SNAPSHOT.jar
+	java  -jar target/exploreplaces5.2-dockerization-3.0.0-SNAPSHOT.jar
 	``
 
 
@@ -111,7 +111,7 @@ changing active profile from CMD, (first go to project directory):
 or
 
 	``
-	java  -Dspring.profiles.active=mysql -jar target/explorePlaces5.2-dockerization-3.0.0-SNAPSHOT.jar
+	java  -Dspring.profiles.active=mysql -jar target/exploreplaces5.2-dockerization-3.0.0-SNAPSHOT.jar
 	``
 	
 
@@ -132,7 +132,7 @@ or
 
 ##### Build Docker image
 	``
-	docker build -t explorePlaces .
+	docker build -t exploreplaces .
 	``
 ##### check all images
 	``
@@ -140,7 +140,7 @@ or
 	``
 ##### Run Docker container
 	``
-	docker run    --name ec-app -p8080:8080 -d explorePlaces
+	docker run    --name ec-app -p8080:8080 -d exploreplaces
 	
 	docker ps -a
 	
@@ -158,7 +158,7 @@ or
 
 	docker ps -a
 	docker images
-	docker rmi explorePlaces
+	docker rmi exploreplaces
 	docker images
 ##### docker file updated; change the profile setting
 

@@ -1,6 +1,6 @@
 # Second step towards dockeriazation:
 
-In order to improve dockeriazation, We are going to Dockerize "explorePlaces" application itself with **default** db profile.
+In order to improve dockeriazation, We are going to Dockerize "exploreplaces" application itself with **default** db profile.
 
 in order to run with mysql we will get error like: *"docker hikaripool-1 - exception during pool initialization"*. we need to do further changes, which we will do in next version.
 
@@ -28,9 +28,9 @@ it will look like below:
 
 	FROM openjdk:11
 	WORKDIR /
-	ADD target/explorePlaces5.2-dockerization-3.0.0-SNAPSHOT.jar //
+	ADD target/exploreplaces5.2-dockerization-3.0.0-SNAPSHOT.jar //
 	EXPOSE 8080
-	ENTRYPOINT [ "java", "-jar", "/explorePlaces5.2-dockerization-3.0.0-SNAPSHOT.jar"]
+	ENTRYPOINT [ "java", "-jar", "/exploreplaces5.2-dockerization-3.0.0-SNAPSHOT.jar"]
 	
 So starting point is, 
 we already have linux operating system from there we gona use java 11 image.
@@ -40,22 +40,22 @@ Entrypoint is sort of equivalent to command line where we need to run mentioned 
 
 ##### Step 3: Now we are going to invoke another docker command to create the image.
 
-	docker build -t explorePlaces .
+	docker build -t exploreplaces .
 
 it will download java images, which we can check by:
 
 	docker images	
 	
-We can see here "explorePlaces" image with "latest" tag.
+We can see here "exploreplaces" image with "latest" tag.
  
 
 ##### Step 4: Run the Docker container.
 
-	docker run    --name ec-app -p8080:8080 -d explorePlaces
+	docker run    --name ec-app -p8080:8080 -d exploreplaces
 
 in this command:
 	ec-app is the name of container.
-	publishing to public host 8080 to localhost(within the container) 8080 and we are going to use explorePlaces image
+	publishing to public host 8080 to localhost(within the container) 8080 and we are going to use exploreplaces image
 	
 	Check if container is there or started, if there will be a problem the status will be "exited" and you won't be able to see the log because image won't be running.	
 	
