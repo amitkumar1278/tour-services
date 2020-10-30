@@ -42,7 +42,7 @@ following steps need to perform for dockerization of application only.
 ### Docker Commands
 ##### Start MySql Container (downloads image if not found)
 	``
-	docker run  --detach   --name ec-mysql -p 6604:3306 -e MYSQL_ROOT_PASSWORD=password -e MYSQL_DATABASE=explorecali -e MYSQL_USER=cali_user -e MYSQL_PASSWORD=cali_pass -d mysql
+	docker run  --detach   --name ec-mysql -p 6604:3306 -e MYSQL_ROOT_PASSWORD=password -e MYSQL_DATABASE=explorePlaces -e MYSQL_USER=admin -e MYSQL_PASSWORD=password123 -d mysql
 	``
 
 ##### view all images
@@ -94,7 +94,7 @@ we can change spring profile simply by chnaging below value in application.prope
 or
 
 	``
-	java  -jar target/explorecali-3.0.0-SNAPSHOT.jar
+	java  -jar target/explorePlaces5.2-dockerization-3.0.0-SNAPSHOT.jar
 	``
 
 
@@ -111,7 +111,7 @@ changing active profile from CMD, (first go to project directory):
 or
 
 	``
-	java  -Dspring.profiles.active=mysql -jar target/explorecali-3.0.0-SNAPSHOT.jar
+	java  -Dspring.profiles.active=mysql -jar target/explorePlaces5.2-dockerization-3.0.0-SNAPSHOT.jar
 	``
 	
 
@@ -132,7 +132,7 @@ or
 
 ##### Build Docker image
 	``
-	docker build -t explorecali .
+	docker build -t explorePlaces .
 	``
 ##### check all images
 	``
@@ -140,7 +140,7 @@ or
 	``
 ##### Run Docker container
 	``
-	docker run    --name ec-app -p8080:8080 -d explorecali
+	docker run    --name ec-app -p8080:8080 -d explorePlaces
 	
 	docker ps -a
 	
@@ -158,7 +158,7 @@ or
 
 	docker ps -a
 	docker images
-	docker rmi explorecali
+	docker rmi explorePlaces
 	docker images
 ##### docker file updated; change the profile setting
 

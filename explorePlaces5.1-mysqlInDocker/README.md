@@ -36,7 +36,7 @@ we can change spring profile simply by chnaging below value in application.prope
 or
 
 	``
-	java  -jar target/explorecali-3.0.0-SNAPSHOT.jar
+	java  -jar target/explorePlaces5.1-mysqlInDocker-3.0.0-SNAPSHOT.jar
 	``
 
 
@@ -53,7 +53,7 @@ changing active profile from CMD, (first go to project directory):
 or
 
 	``
-	java  -Dspring.profiles.active=mysql -jar target/explorecali-3.0.0-SNAPSHOT.jar
+	java  -Dspring.profiles.active=mysql -jar target/explorePlaces5.1-mysqlInDocker-3.0.0-SNAPSHOT.jar
 	``
 	
 

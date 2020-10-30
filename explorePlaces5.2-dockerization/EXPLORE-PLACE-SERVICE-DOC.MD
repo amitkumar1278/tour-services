@@ -40,22 +40,22 @@ Entrypoint is sort of equivalent to command line where we need to run mentioned 
 
 ##### Step 3: Now we are going to invoke another docker command to create the image.
 
-	docker build -t explorecali .
+	docker build -t explorePlaces .
 
 it will download java images, which we can check by:
 
 	docker images	
 	
-We can see here "explorecali" iage with "latest" tag.
+We can see here "explorePlaces" image with "latest" tag.
  
 
 ##### Step 4: Run the Docker container.
 
-	docker run    --name ec-app -p8080:8080 -d explorecali
+	docker run    --name ec-app -p8080:8080 -d explorePlaces
 
 in this command:
 	ec-app is the name of container.
-	publishing to public host 8080 to localhost(within the container) 8080 and we are going to use explorecali image
+	publishing to public host 8080 to localhost(within the container) 8080 and we are going to use explorePlaces image
 	
 	Check if container is there or started, if there will be a problem the status will be "exited" and you won't be able to see the log because image won't be running.	
 	

@@ -50,7 +50,7 @@ for details follow below URL:
 ## Step 3. Docker Commands for MySQL
 ##### Start MySql Container (downloads image if not found)
 ``
-docker run  --detach   --name ec-mysql -p 6604:3306 -e MYSQL_ROOT_PASSWORD=password -e MYSQL_DATABASE=explorecali -e MYSQL_USER=cali_user -e MYSQL_PASSWORD=cali_pass -d mysql
+docker run  --detach   --name ec-mysql -p 6604:3306 -e MYSQL_ROOT_PASSWORD=password -e MYSQL_DATABASE=explorePlaces -e MYSQL_USER=admin -e MYSQL_PASSWORD=password123 -d mysql
 ``
 
 ##### view all images
@@ -68,6 +68,10 @@ docker run -it --link ec-mysql:mysql --rm mysql sh -c 'exec mysql -h"$MYSQL_PORT
 ``
 
 use sudo if you are getting connection error.
+
+refer below link if not able to connect with IP address: 
+	https://www.tecmint.com/fix-error-2003-hy000-cant-connect-to-mysql-server-on-127-0-0-1-111/
+
 
 ##### Stop ec-mysql container
 ``
@@ -89,7 +93,7 @@ docker rmi mysql:latest
 ## Step 4. MySQL commands once connection is established.
 
 	``	mysql> show databases;
-		mysql> use explorecali;
+		mysql> use explorePlaces;
 		mysql> show tables;
 		mysql> select * from tour;
 		mysql> quit
