@@ -50,7 +50,7 @@ for details follow below URL:
 ## Step 3. Docker Commands for MySQL
 ##### Start MySql Container (downloads image if not found)
 ``
-docker run  --detach   --name ec-mysql -p 6604:3306 -e MYSQL_ROOT_PASSWORD=password -e MYSQL_DATABASE=explorePlaces -e MYSQL_USER=admin -e MYSQL_PASSWORD=password123 -d mysql
+docker run  --detach   --name ec-mysql -p 6604:3306 -e MYSQL_ROOT_PASSWORD=password -e MYSQL_DATABASE=exploreplaces -e MYSQL_USER=admin -e MYSQL_PASSWORD=password123 -d mysql
 ``
 
 ##### view all images
@@ -93,7 +93,7 @@ docker rmi mysql:latest
 ## Step 4. MySQL commands once connection is established.
 
 	``	mysql> show databases;
-		mysql> use explorePlaces;
+		mysql> use exploreplaces;
 		mysql> show tables;
 		mysql> select * from tour;
 		mysql> quit
