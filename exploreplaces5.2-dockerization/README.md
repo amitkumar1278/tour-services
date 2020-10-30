@@ -120,33 +120,14 @@ or
 ##### Build jar
 	``
 	mvn package -DskipTests
-	or
-	mvn package -DskipTests=true
 	``
-##### check if jar file is build or not
-	ls tafrget/  
-
-##### chceck for Dockerfile
-	ls
-	cat Dockerfile
-
 ##### Build Docker image
 	``
 	docker build -t exploreplaces .
 	``
-##### check all images
-	``
-	docker images
-	``
 ##### Run Docker container
 	``
 	docker run    --name ec-app -p8080:8080 -d exploreplaces
-	
-	docker ps -a
-	
-	docker logs ec-app
-	
-	docker inspect ex-app
 	``
 ##### enter Docker container
 	``

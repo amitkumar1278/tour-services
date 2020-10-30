@@ -11,6 +11,8 @@ As part of this we will create a docker image which include linux operating syst
 
 ##### Step 1: first make sure that our jar of application explorePlace has been built. use below command to build.
 
+		mvn package -DskipTests
+		OR
 		mvn package -DskipTests=true
 
 check if jar file is created or not in target dir:
@@ -59,13 +61,77 @@ in this command:
 	
 	Check if container is there or started, if there will be a problem the status will be "exited" and you won't be able to see the log because image won't be running.	
 	
+to see all container	
 	docker ps -a
+	
+to see last container
+	docker ps -l
+	docker ps -l --format=$FORMAT
+	
 	docker logs ec-app
 	
 to get details of the image, inspect it using:	
 	docker inspect ex-app
 
-##### Step 5: invoke API from postman to check if container is working fine or not.
+##### Step 5: enter Docker container
+	
+	``
+	docker exec -t -i ec-app /bin/bash
+	``
+##### Step 6: invoke API from postman to check if container is working fine or not.
+
+
+
+# Docker Flow
+
+Once docker is running next step can be stop and commit.
+
+The Docker flow:
+- Image (docker run: it takes image to container)
+- Running Container
+- Stopped Container(it's stopped but not deleted.)
+- New Image (docker commit: it takes container to new image.)
+
+Here we will explore, How we can create Image from the container.
+
+look at the most recently existed container:
+	docker ps
+
+to see all container 
+	docker ps -a
+
+to see last container 
+	docker ps -l --format=$FORMAT
+
+to start with new Ubuntu Image(It will download ubuntu image if not available in local):
+	docker run -ti ubuntu bash
+
+take a look, its totally blank; normal ubuntu container.:
+	ls
+
+make a file:
+	touch MY-IMPORTANT-FILE
+
+exit from ubuntu container.
+	exit
+	
+look into most recently existed container:
+	docker ps -l --format=$FORMAT
+
+create new image of recent container:
+	dcoker commit {containerID}
+
+tag image with a name:
+	
+	docker tag {big image id} my-image
+	docker images
+	docker run -ti my-image bash
+
+tag image while commiting
+	docker commit current_image my-image-2
+
+
+
 
 
 
