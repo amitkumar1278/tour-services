@@ -21,13 +21,21 @@ currently it will not run with mysql and throw exception like: *"docker hikaripo
 
 As part of this we will create a docker image which include Linux operating system, Java JDK 11 and the **explorePlace5.2** application jar.
 
-following steps need to perform for dockerization of application only.
+following steps need to perform for dockerization of standalone application.
 
 - first make sure that our jar of application explorePlace has been built and placed inside "/target" dir.
 - we need to create "Dockerfile" on root path of application, so this is sort of configuration of setting docker image.
 - Now we need to invoke another docker command to create the image. which will download java images, if not available in local.
 - Run the Docker container using docker command. if the status is "exited" then there is some issue in running the image. to get details of the image we can inspect as well.
 - invoke API from postman to check if container is working fine or not.
+
+if we want to run the same application with MySQL we need to do few changes in above explained standalone application steps:
+- need to define active profile in Dockerfile configuration as below:
+	*ENTRYPOINT [ "java", "-jar", "-Dspring.profiles.active=mysql", "/exploreplaces5.2-dockerization-3.0.0-SNAPSHOT.jar"]*
+- need to pass a complete DB URI(container name instead localhost) for connectivity, which we need to define in *application-mysql.properties* like:
+	*spring.datasource.url=jdbc:mysql://ec-mysql:3306/exploreplaces*
+- we need to link DB container to MY sql like belows:
+	*docker run --name ec-app -p 8080:8080 --link ec-mysql:mysql -d explorecali*
 
 
 
@@ -79,70 +87,50 @@ following steps need to perform for dockerization of application only.
 #### Startup with Profile settings
 ##### Default profile, H2 database
 
-we can change spring profile simply by chnaging below value in application.properties file:
-
-	for default profile:	spring.profiles.active=default
-	for mysql profile:	spring.profiles.active=mysql
-
-
-**Start Spring boot application from CMD**
-
-	``
-	mvn -version
-	mvn spring-boot:run
-	``
+	``	mvn spring-boot:run ``
 or
 
-	``
-	java  -jar target/exploreplaces5.2-dockerization-3.0.0-SNAPSHOT.jar
-	``
+	``java  -jar target/exploreplaces5.2-dockerization-3.0.0-SNAPSHOT.jar``
 
 
 ##### mysql profile, MySql database (requires running docker container ec-mysql)
 changing active profile from CMD, (first go to project directory):
 
 
-	``
-	mvn spring-boot:run -Dspring.profiles.active=mysql 
+	``mvn spring-boot:run -Dspring.profiles.active=mysql 
 	or
-	mvn spring-boot:run -Dspring.profiles.active=mysql -DskipTests=true
-	``
+	mvn spring-boot:run -Dspring.profiles.active=mysql -DskipTests=true	``
 
 or
 
-	``
-	java  -Dspring.profiles.active=mysql -jar target/exploreplaces5.2-dockerization-3.0.0-SNAPSHOT.jar
-	``
+	``java  -Dspring.profiles.active=mysql -jar target/exploreplaces5.2-dockerization-3.0.0-SNAPSHOT.jar``
 	
 
 #### Dockerize Explore California
 
-##### Build jar
-	``
-	mvn package -DskipTests
-	``
-##### Build Docker image
-	``
-	docker build -t exploreplaces .
-	``
+**Build jar** 	``mvn package -DskipTests``
+
+**Build Docker image**	``docker build -t exploreplaces . ``
+
 ##### Run Docker container
-	``
-	docker run    --name ec-app -p8080:8080 -d exploreplaces
-	``
-##### enter Docker container
-	``
-	docker exec -t -i ec-app /bin/bash
-	``
+----------------------------------	
+**for h2 or standalone db:** ``docker run    --name ec-app -p8080:8080 -d exploreplaces``
+
+**to integrate with MySQL running on another docker:** `` docker run --name ec-app -p 8080:8080 --link ec-mysql:mysql -d exploreplaces ``
 
 
-# Link the Java application and database Docker containers
+	
+**enter Docker container**	``docker exec -t -i ec-app /bin/bash``
+	
+
+
+# frequesnt used docker commands
 
 	docker ps -a
 	docker images
 	docker rmi exploreplaces
 	docker images
-##### docker file updated; change the profile setting
-
+	
 
 
 

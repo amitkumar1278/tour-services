@@ -2,83 +2,7 @@
 
 In order to improve dockeriazation, We are going to Dockerize "exploreplaces" application itself with **default** db profile.
 
-in order to run with mysql we will get error like: *"docker hikaripool-1 - exception during pool initialization"*. we need to do further changes, which we will do in next version.
 
-in this process we will run default profile which will interact with H2 database so container of this image can run completely standalone.
-
-As part of this we will create a docker image which include linux operating system, Java JDK 8 version 8 and the **explorePlace5.2** application jar, which include execution of below steps:
-
-
-##### Step 1: first make sure that our jar of application explorePlace has been built. use below command to build.
-
-		mvn package -DskipTests
-		OR
-		mvn package -DskipTests=true
-
-check if jar file is created or not in target dir:
-		
-		ls target/ 
-
-##### Step 2: we have created "Dockerfile" on root path of application, so this is sort of configuration of setting docker image.
-
-##### check for Dockerfile
-
-		ls
-		cat Dockerfile
-
-it will look like below:
-
-	FROM openjdk:11
-	WORKDIR /
-	ADD target/exploreplaces5.2-dockerization-3.0.0-SNAPSHOT.jar //
-	EXPOSE 8080
-	ENTRYPOINT [ "java", "-jar", "/exploreplaces5.2-dockerization-3.0.0-SNAPSHOT.jar"]
-	
-So starting point is, 
-we already have linux operating system from there we gona use java 11 image.
-then "WORKDIR" then we are going to add jar to the image.
-we are going to expose at port 8080.
-Entrypoint is sort of equivalent to command line where we need to run mentioned command with actual jar file name which is within the image.
-
-##### Step 3: Now we are going to invoke another docker command to create the image.
-
-	docker build -t exploreplaces .
-
-it will download java images, which we can check by:
-
-	docker images	
-	
-We can see here "exploreplaces" image with "latest" tag.
- 
-
-##### Step 4: Run the Docker container.
-
-	docker run    --name ec-app -p8080:8080 -d exploreplaces
-
-in this command:
-	ec-app is the name of container.
-	publishing to public host 8080 to localhost(within the container) 8080 and we are going to use exploreplaces image
-	
-	Check if container is there or started, if there will be a problem the status will be "exited" and you won't be able to see the log because image won't be running.	
-	
-to see all container	
-	docker ps -a
-	
-to see last container
-	docker ps -l
-	docker ps -l --format=$FORMAT
-	
-	docker logs ec-app
-	
-to get details of the image, inspect it using:	
-	docker inspect ex-app
-
-##### Step 5: enter Docker container
-	
-	``
-	docker exec -t -i ec-app /bin/bash
-	``
-##### Step 6: invoke API from postman to check if container is working fine or not.
 
 
 
@@ -131,6 +55,99 @@ tag image while commiting
 	docker commit current_image my-image-2
 
 
+# Dockeriation of Application
+
+
+# Standalone & MySQL Application dockeriation
+
+process to run default db profile and mysql profile is almost same.
+
+in case of **Standalone application**, we will run default profile which will interact with H2 database so container of this image can run completely standalone.
+
+in case of **MySQL DB profile**, we did little changes in *Dockerfile* and *application-mysql.properties* which is like:
+ **Dockerfile*:* ENTRYPOINT [ "java", "-jar", "-Dspring.profiles.active=mysql", "/exploreplaces5.2-dockerization-3.0.0-SNAPSHOT.jar"]
+ **application-mysql.properties**: spring.datasource.url=jdbc:mysql://ec-mysql:3306/exploreplaces
+
+
+As part of this we will create a docker image which include linux operating system, Java JDK 8 version 8 and the **explorePlace5.2** application jar, which include execution of below steps:
+
+
+##### Step 1: first make sure that our jar of application explorePlace has been built. use below command to build.
+
+		mvn package -DskipTests
+		OR
+		mvn package -DskipTests=true
+
+check if jar file is created or not in target dir:
+		
+		ls target/ 
+
+##### Step 2: we have created "Dockerfile" on root path of application, so this is sort of configuration of setting docker image.
+
+##### check for Dockerfile
+
+		ls
+		cat Dockerfile
+
+it will look like below:
+
+	FROM openjdk:11
+	WORKDIR /
+	ADD target/exploreplaces5.2-dockerization-3.0.0-SNAPSHOT.jar //
+	EXPOSE 8080
+	ENTRYPOINT [ "java", "-jar", "/exploreplaces5.2-dockerization-3.0.0-SNAPSHOT.jar"]
+	
+So starting point is, 
+we already have linux operating system from there we gona use java 11 image.
+then "WORKDIR" then we are going to add jar to the image.
+we are going to expose at port 8080.
+Entrypoint is sort of equivalent to command line where we need to run mentioned command with actual jar file name which is within the image.
+
+##### Step 3: Now we are going to invoke another docker command to create the image.
+
+	docker build -t exploreplaces .
+
+it will download java images, which we can check by:
+
+	docker images	
+	
+We can see here "exploreplaces" image with "latest" tag.
+ 
+
+##### Step 4: Run the Docker container.
+
+
+for h2 or standalone db: 
+	docker run --name ec-app -p8080:8080 -d exploreplaces
+
+to integrate with MySQL running on another docker: 
+	docker run --name ec-app -p 8080:8080 --link ec-mysql:mysql -d exploreplaces
+
+
+in this command:
+	ec-app is the name of container.
+	publishing to public host 8080 to localhost(within the container) 8080 and we are going to use exploreplaces image
+	
+	Check if container is there or started, if there will be a problem the status will be "exited" and you won't be able to see the log because image won't be running.	
+	
+to see all container	
+	docker ps -a
+	
+to see last container
+	docker ps -l
+	docker ps -l --format=$FORMAT
+	
+	docker logs ec-app
+	
+to get details of the image, inspect it using:	
+	docker inspect ex-app
+
+##### Step 5: enter Docker container
+	
+	``
+	docker exec -t -i ec-app /bin/bash
+	``
+##### Step 6: invoke API from postman to check if container is working fine or not.
 
 
 
@@ -139,8 +156,11 @@ tag image while commiting
 
 
 
+# Application dockeriation with MySQL
 
 
+
+in order to run with mysql we will get error like: *"docker hikaripool-1 - exception during pool initialization"*. we need to do further changes, which we will do in next part.
 
 
 
