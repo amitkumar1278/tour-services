@@ -5,7 +5,6 @@ In order to improve dockeriazation, We are going to Dockerize "exploreplaces" ap
 
 
 
------------------------------------
 # Docker Flow
 
 Once docker is running next step can be stop and commit.
