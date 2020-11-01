@@ -57,7 +57,16 @@ for this we created a seperate db profile "application-docker.properties" contai
  
  Also updated Entrypoint in Dockerfile and pass all input from docker run command.
  
- 
+ -----------------------------------
+
+# Fifth step towards dockeriazation:
+
+In this we try to create docker image through maven for that we configure spotify plugin in pom.xml.
+
+we have different command explain in readme.md docs to build different images dynamicallly at the same time and deploy on different port from cmd.
+
+this is not fully working, we need to do some enhancement.
+
 
 -----------------------------------
 
@@ -148,7 +157,7 @@ changing active profile from CMD, (first go to project directory):
 
 ##### Run Docker container with mysql profile
 
-	docker run    --name ec-app-mysql -p 8181:8080  --link ec-mysql:mysql -d exploreplaces-mysql
+	docker run --name ec-app-mysql -p 8181:8080  --link ec-mysql:mysql -d exploreplaces-mysql
 
 
 ------------------------------------
@@ -174,6 +183,23 @@ docker exec -t -i ec-app /bin/bash
 
 ------------------------------------
 
+##### Push image to Docker hub
+######Login to Docker hub locally
+	docker login
+	
+###### Upload image
+
+	docker tag <image id> <docker hub repository>/exploreplaces-default:latest
+
+###### Download image
+
+	docker pull <docker hub repository>/exploreplaces-default
+
+##### Run Container from docker hub image
+
+	docker run --name ec-app-default -p 8080:8080  -d <docker hub repository>/exploreplaces-default
+
+------------------------------------
 # frequesnt used docker commands
 
 	docker ps -a
