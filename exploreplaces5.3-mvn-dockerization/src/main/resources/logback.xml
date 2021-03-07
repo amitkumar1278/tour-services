@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<configuration>
-	<!-- This is called configuring an appender into layout, each appender can form message differently. -->
-	 <!-- Below appender is Spring Boot logger appender, this creates file appender and console appender each with there own layouts.-->
-    <include resource="org/springframework/boot/logging/logback/base.xml"/>
-    
-    <!-- Configuring package at log level, and here log level is debug. In production we generally put log level as info -->
-    <logger name="com.example.ec" level="DEBUG"/>
-</configuration>
